@@ -20,6 +20,10 @@ public class EjemploInicial {
 
         //cadenas de texto
         String nombre = "Juan Pedro";
+        char letra = 'J';
+
+        //Boolean
+        boolean esPadre = true;
 
         //codigo fuente
         System.out.print("Bienvenido al curso 25-26 de programación!!");
