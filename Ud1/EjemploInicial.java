@@ -12,7 +12,9 @@ public class EjemploInicial {
         int edadInicial;
         int edadPadres;
 
-        edad = 28;
+        edadInicial = 28;
+
+        edad = edadInicial + 20;
 
         // Variables de tipo decimal
         float peso = 243.3f;
