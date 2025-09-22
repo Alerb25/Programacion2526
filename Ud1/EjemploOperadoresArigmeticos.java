@@ -1,6 +1,6 @@
 package Ud1;
 
-public class EjemploOperadores {
+public class EjemploOperadoresArigmeticos {
 
     public static void main(String[] args) {
 
