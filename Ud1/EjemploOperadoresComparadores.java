@@ -24,9 +24,18 @@ public class EjemploOperadoresComparadores {
          * asignamos una condicion a la variable
          * Si la condicion es cierta vale true y sino false
          */
-        puedeIrDelante = altura >= 135;
+        //puedeIrDelante = altura >= 135 || edad >= 10;
+        if (altura >= 135 || edad >= 10) {
+            
+            puedeIrDelante= true;
+            System.out.println("La condicion puede ir delante es " + puedeIrDelante);
 
-        System.out.println("La condicion puede ir delante es " + puedeIrDelante);
+        } else {
+            
+            System.out.println("La condicion puede ir delante es " + puedeIrDelante);
+        }
+
+        
 
         teclado.close();
 
