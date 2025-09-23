@@ -44,18 +44,30 @@ public class EjemploOperadoresComparadores {
          */
 
          float peso = 80.5f;
-         boolean casoPadre = false;
+         boolean casoPadre = true;
          int rangoFit = 5;
 
          // || es OR && es AND
          //Para comparar una var y un valor unico utilizamos == 
-         if (peso < 80.5 && casoPadre == true || rangoFit > 5){
+         if (peso < 80.5 && (casoPadre == true || rangoFit > 5)){
                 System.out.println("Icaro puede volar");
 
          } else {
             System.out.println("Icaro se cae");
          }
 
+         /*
+          * Para volver a por las llaves 
+          * Tiene que hacerle caso a su padre Y pesar menos de 90kg 
+          * O tener un nivel de google fit mayor de 10
+          */
+
+          //Por defecto siempre se hace el AND antes que el OR
+          if (casoPadre == true && peso < 90 || rangoFit > 10){
+                System.out.println("Puede pasar");
+          } else {
+            System.out.println("No pasa");
+          }
         teclado.close();
 
     }
