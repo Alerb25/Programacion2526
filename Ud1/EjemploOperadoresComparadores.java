@@ -24,18 +24,37 @@ public class EjemploOperadoresComparadores {
          * asignamos una condicion a la variable
          * Si la condicion es cierta vale true y sino false
          */
-        //puedeIrDelante = altura >= 135 || edad >= 10;
+        // puedeIrDelante = altura >= 135 || edad >= 10;
+       
         if (altura >= 135 || edad >= 10) {
-            
-            puedeIrDelante= true;
+
+            puedeIrDelante = true;
             System.out.println("La condicion puede ir delante es " + puedeIrDelante);
 
         } else {
-            
+
             System.out.println("La condicion puede ir delante es " + puedeIrDelante);
         }
 
-        
+        /*
+         * EJercicio Practico
+         * Icaro para poder volar de Creta a Atenas Necesitaba:
+         * Pesar menos de 80.5 kg y cumplir una de las dos condiciones
+         * Hacer caso a su padre(boolean) O tener mas de rango 5 en google fit (int)
+         */
+
+         float peso = 80.5f;
+         boolean casoPadre = false;
+         int rangoFit = 5;
+
+         // || es OR && es AND
+         //Para comparar una var y un valor unico utilizamos == 
+         if (peso < 80.5 && casoPadre == true || rangoFit > 5){
+                System.out.println("Icaro puede volar");
+
+         } else {
+            System.out.println("Icaro se cae");
+         }
 
         teclado.close();
 
