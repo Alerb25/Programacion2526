@@ -1,7 +1,5 @@
 package Ejers_Ud1;
 
-import java.util.Scanner;
-
 public class areaCirculo {
     
     public static void main(String[] args) {
