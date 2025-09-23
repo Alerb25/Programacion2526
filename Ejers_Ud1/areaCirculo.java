@@ -1,5 +1,7 @@
 package Ejers_Ud1;
 
+import java.util.Scanner;
+
 public class areaCirculo {
     
     public static void main(String[] args) {
@@ -16,6 +18,6 @@ public class areaCirculo {
         //Calculamos el area
         area = 3.14f *(radio*radio);
         System.out.println("El area es: " + area);
-
+        teclado.close();
     }
 }
