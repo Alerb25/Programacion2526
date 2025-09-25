@@ -22,6 +22,7 @@ public class funcionesSegundoGrado {
 
         //Para sacar el resultado usamos la formula y para las raices cuadrdadas utilizamos el .math()
         resultado = (-b + Math.sqrt((b*b)-4*a*c))/(2*a);
+        //En el caso que no se pueda resolver lo indico
         if ( Double.isNaN(resultado)){
             System.out.println("No se puede resolver");
         }else{
