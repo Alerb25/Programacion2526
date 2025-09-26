@@ -23,7 +23,7 @@ public class sueldoBruto {
         //Hacemos las operaciones
         resultado = (sueldo * immpuestos)/100;
         diferencia = sueldo - resultado;
-        System.out.println( "Cobras " + sueldo + "pero hacienda te quita " + diferencia + "por lo cual te quedan unos miseros " + resultado);
+        System.out.println( "Cobras " + sueldo + " pero hacienda te quita " + diferencia + " por lo cual te quedan unos miseros " + resultado);
         
         teclado.close();
         
