@@ -8,7 +8,7 @@ public class funcionesSegundoGrado {
     public static void main(String arg[]){
         //Defino las variables y lo pongo para resgistre las respuestas por teclado
         double a,b,c; 
-        double resultado; //float no es compatible con el resultado de Math()
+        double resultado1, resultado2, raiz; //float no es compatible con el resultado de Math()
         Scanner teclado = new Scanner(System.in);
 
         //Explico el programa y pido que el usuario introduzca los parametros
@@ -21,12 +21,16 @@ public class funcionesSegundoGrado {
         c = teclado.nextFloat();
 
         //Para sacar el resultado usamos la formula y para las raices cuadrdadas utilizamos el .math()
-        resultado = (-b + Math.sqrt((b*b)-4*a*c))/(2*a);
-        //En el caso que no se pueda resolver lo indico
-        if ( Double.isNaN(resultado)){
-            System.out.println("No se puede resolver");
-        }else{
-        System.out.println("El resultado es: " + resultado);
+        raiz = Math.sqrt((b*b)-4*a*c);
+        resultado1 = (-b + raiz)/(2*a);
+        resultado2 = (-b - raiz)/(2*a);
+
+        //si la raiz no se puede hacer esque no hay solución
+        if (Double.isNaN(raiz)){
+            System.out.println("No hay solución");
+
+        }else {
+            System.out.println("Los resultados son:" + resultado1 + " y " + resultado2);
         }
 
         teclado.close();
