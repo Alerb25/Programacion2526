@@ -17,11 +17,11 @@ public class sueldoBruto {
         System.out.println("El programa funciona de tal manera que usted introduce sus sueldo bruto, y los impuestos que se le aplican, y se le devuelve el resultado");
         System.out.print("Introduzca su sueldo: ");
         sueldo = teclado.nextFloat();
-        System.out.print("Intrpduzca los impuestos que se le aplican(de forma numerica): ");
+        System.out.print("Introduzca el  porcentaje de IRPF que se le aplican: ");
         immpuestos = teclado.nextFloat();
 
         //Hacemos las operaciones
-        resultado = sueldo * immpuestos;
+        resultado = (sueldo * immpuestos)/100;
         diferencia = sueldo - resultado;
         System.out.println( "Cobras " + sueldo + "pero hacienda te quita " + diferencia + "por lo cual te quedan unos miseros " + resultado);
         
