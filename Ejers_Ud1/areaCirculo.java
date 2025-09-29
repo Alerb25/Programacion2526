@@ -17,7 +17,7 @@ public class areaCirculo {
 
         //Calculamos el area
         area = 3.14f *(radio*radio);
-        System.out.println("El area es: " + area);
+        System.out.println("El area es: " + area + "cm2");
         teclado.close();
     }
 }
