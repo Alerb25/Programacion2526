@@ -10,7 +10,7 @@ public class sueldoBruto {
 
     public static void main(String[] args) {
         //Definimos las variables
-        float sueldo, immpuestos, resultado, diferencia;
+        float sueldo, impuestos, resultado, diferencia;
         Scanner teclado = new Scanner(System.in);
 
         //Explicamos al usuario lo que tiene que hacer y pedimos los datos
@@ -18,10 +18,10 @@ public class sueldoBruto {
         System.out.print("Introduzca su sueldo: ");
         sueldo = teclado.nextFloat();
         System.out.print("Introduzca el  porcentaje de IRPF que se le aplican: ");
-        immpuestos = teclado.nextFloat();
+        impuestos = teclado.nextFloat();
 
         //Hacemos las operaciones
-        resultado = (sueldo * immpuestos)/100;
+        resultado = (sueldo * impuestos)/100;
         diferencia = sueldo - resultado;
         System.out.println( "Cobras " + sueldo + " pero hacienda te quita " + diferencia + " por lo cual te quedan unos miseros " + resultado);
         
