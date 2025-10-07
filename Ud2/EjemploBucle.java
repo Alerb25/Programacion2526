@@ -33,5 +33,26 @@ public class EjemploBucle {
     }
     int mediaEdad = sumaEdad / 10;
     System.out.println("La media de edad es: " + mediaEdad);
+
+    //Ejerv2
+    //Leer edades de 10 personas, que deben estar entre 18 y 65. 
+    //se saca por pantalla si esta jubiladoo si es mayor de edad
+    
+    while (i < 11){
+        //Genero la edad aleatoria
+        edad = (int) ((Math.random()*100)+1);
+        System.out.println("La edad de la persona número "+ i + " es "+ edad);
+        i++;
+        
+        if (edad < 65){
+            System.out.println("Eres mayor de edad");
+        }else if (edad > 18) {
+            System.out.println("Eres menor de edad");
+        } else {
+            System.err.println("Estas Jubilado");
+        }
+    
+    }
+
     }
 }
