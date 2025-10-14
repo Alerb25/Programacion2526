@@ -6,7 +6,17 @@ public class contarPares {
         //Se mostrará un mensaje del tipo num x es par/impar
         //Despues sacaremos la cantidad de cada tipo y el procentaje
 
-        
+
+        for ( int i = 1; i<= 20; i++){
+             int numAleatorio = (int) (Math.random()*100+1);
+
+             if (numAleatorio%2 == 0){
+                System.out.println("el número " + numAleatorio + " es par");
+
+             } else {
+                 System.out.println("el número " + numAleatorio + " es impar");
+             }
+        }
 
     }
 }
