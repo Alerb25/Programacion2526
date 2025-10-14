@@ -1,6 +1,6 @@
 package Ud2;
 
-public class EjemploBucle2 {
+public class CuentaAtras {
     public static void main(String[] args) {
         /*
          * Vamos a hacer un programa que haga cuenta atrás de un cohete
