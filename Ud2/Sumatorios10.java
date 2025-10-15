@@ -11,26 +11,48 @@ public class Sumatorios10 {
          * hasta 10
          */
 
-         int i = 1;
-         int suma = 0;
+        // Aqui sin utilizar el for
+        // while (i < 11){
+        // suma += i;
+        // System.out.println( "Hasta " + i + " = " + suma);
+        // i ++;
+        // }
 
-        //  while (i < 11){
-        //     suma += i;
-        //     System.out.println( "Hasta " + i + " = " + suma);
-        //     i ++;
-        //  }
+        // Esta fue la solución propuesta por pablo utilizando el for
+        // for(int num=0; num<11; i++ ){ //definicion de var; motivo de parada;
+        // condicion
+        // System.out.println("La suma de " + num + ": ");
+        // //para cada valor de num realizamos la suma desde 1 hasta num
+        // for (int j=2; j<=num; j++){
+        // //vamos sumando en la var suma los valores de j que van desde 1 hasta el num
+        // actual
 
-        for(int num=0; num<11; i++ ){ //definicion de var; motivo de parada; condicion
-            System.out.println("La suma de " + num + ": ");
-            //para cada valor de num realizamos la suma desde 1 hasta num
-            for (int j=2; j<=num; j++){
-                //vamos sumando en la var suma los valores de j que van desde 1 hasta el num actual
-                
-                if (j !=num) System.out.println("+");
+        // if (j !=num) System.out.println("+");
+        // System.out.print(j);
+        // suma += j;
+        // }
+
+        // }
+
+        int total = 0;
+
+        for (int i = 1; i < 11; i++) {
+            total += i;
+            System.out.print("La suma hasta " + i + " : ");
+
+            for (int j = 1; j <= i; j++) {
                 System.out.print(j);
-                suma += j;
+
+                if (j < i) {
+                    System.out.print("+");
+                }
+
+
             }
+            
+            System.out.println("=" + total);
 
         }
+
     }
 }
