@@ -44,12 +44,12 @@ public class Sumatorios10 {
                 System.out.print(j);
 
                 if (j < i) {
-                    System.out.print("+");
+                    System.out.print(" + ");
                 }
 
             }
 
-            System.out.println("=" + total);
+            System.out.println(" = " + total);
 
         }
 
