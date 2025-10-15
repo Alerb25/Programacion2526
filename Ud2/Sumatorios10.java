@@ -47,9 +47,8 @@ public class Sumatorios10 {
                     System.out.print("+");
                 }
 
-
             }
-            
+
             System.out.println("=" + total);
 
         }
