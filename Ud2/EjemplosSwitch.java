@@ -30,13 +30,44 @@ public class EjemplosSwitch {
             case 1:
                 System.out.println("Álava");
                 break;
-                
+
             default:
                 System.out.println("No lo se");
                 break;
         }
 
 
-        teclado.close();
+        //Se genera aleatoria mente un num entre el 1 y el 7 y se dice que dia de la semana es pero el 6 y 7 son fin de semana
+            int dia = (int) (Math.random()*7+1);
+            String diaEscrito;
+            switch (dia) {
+                case 1:
+                    diaEscrito = "Lunes";
+                    break;
+                case 2:
+                    diaEscrito = "Martes";
+                    break;
+                case 3:
+                    diaEscrito = "Miercoles";
+                    break;
+                case 4:
+                    diaEscrito = "Jueves";
+                    break;
+                case 5:
+                    diaEscrito = "Viernes";
+                    break;
+                
+                default:
+                    diaEscrito = "Fin de Semana";
+                    break;
+            }
+
+            if ( diaEscrito != "Fin de Semana"){
+            System.out.println("Hoy es " + diaEscrito);
+            } else {
+                System.out.println("Estamos en " + diaEscrito);
+            }
+        
+            teclado.close();
     }
 }
