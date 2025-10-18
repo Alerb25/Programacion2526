@@ -13,7 +13,9 @@ public class mayorAMenor {
      //Vamos a hacer un syso explicando como funciona el programa para el usuario
      System.out.println("Programa Mayor, Menor & co.");
      System.out.println("--------------------------------");
+     System.out.println("");
      System.out.println("Deberá introducir 5 números enteros, el programa dirá el mayor, el menor y con los otros tres se mostrarán cuantos son pares y mayores de 10");
+     System.out.println("");
      System.out.println("--------------------------------");
 
      //Definir variables
