@@ -6,16 +6,15 @@ public class mayorAMenor {
    public static void main(String[] args) {
     /*
      * EL código pide que se lean 5 numeros enteros (int)
-     * Se muestran el num max y el min
+     * Se muestran el num mayor y el menor
      * luego de los tres sobrantes decir si son pares y mayores de 10 (utilizar el &&)
-     * no se pueden utilizar funciones como Math para hacer la comparación de los números.
      */
 
      //Vamos a hacer un syso explicando como funciona el programa para el usuario
      System.out.println("Programa Mayor, Menor & co.");
      System.out.println("--------------------------------");
      System.out.println("");
-     System.out.println("Deberá introducir 5 números enteros, el programa dirá el max, el min y con los otros tres se mostrarán cuantos son pares y mayores de 10");
+     System.out.println("Deberá introducir 5 números enteros, el programa dirá el mayor, el menor y con los otros tres se mostrarán cuantos son pares y mayores de 10");
      System.out.println("");
      System.out.println("--------------------------------");
 
@@ -53,46 +52,13 @@ public class mayorAMenor {
          System.err.println(error1);
       }else{
          
-         //Comparamos todos los numeros para saber cual es el numero mayor y cual es el minimo
-     // Inicializamos mayor y menor con el primer número
-        int max = number1;
-        int min = number1;
-
-        // Comparamos con el segundo número
-        if (number2 > max) {
-            max = number2;
-        }
-        if (number2 < min) {
-            min = number2;
-        }
-
-        // Comparamos con el tercero
-        if (number3 > max) {
-            max = number3;
-        }
-        if (number3 < min) {
-            min = number3;
-        }
-
-        // Comparamos con el cuarto
-        if (number4 > max) {
-            max = number4;
-        }
-        if (number4 < min) {
-            min = number4;
-        }
-
-        // Comparamos con el quinto
-        if (number5 > max) {
-            max = number5;
-        }
-        if (number5 < min) {
-            min = number5;
-        }
+         //Comparamos todos los numeros para saber cual es el numero mayor y cual es el menor
+         int min = Math.min(Math.min(Math.min(Math.min(number1, number2), number3), number4), number5);
+         int max = Math.max(Math.max(Math.max(Math.max(number1, number2), number3), number4), number5);
 
          System.out.println("--------------------------------");
-         System.out.println("El número max es: " +max);
-         System.out.println("El número min es: " +min);
+         System.out.println("El número mayor es: " +max);
+         System.out.println("El número menor es: " +min);
 
          //Ahora con los otros tres tenemos que saber si son pares y mayores de 10
          if(number1 != min && number1!= max ) {
