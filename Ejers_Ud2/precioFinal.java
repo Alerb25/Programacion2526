@@ -44,6 +44,7 @@ public class precioFinal {
         edad = sc.nextInt();
         System.out.println("¿Hoy es festivo?");
         esFestivo = sc.nextLine();
+        esFestivo = sc.nextLine();
         System.out.println("¿Es estudiante?");
         esEstudiante = sc.nextLine();
         System.out.println("¿Qué día de la semana es hoy?");
@@ -68,6 +69,7 @@ public class precioFinal {
                         //no se aplica descuento
                         break;
                 }
+                System.out.println("El precio es " + precio + " euros.");
             }
 
             //si es miercoles y eres menor de 25 se aplica el 25%
@@ -110,6 +112,7 @@ public class precioFinal {
             if (tieneDiscapacidad == "Si"){
                 System.out.println("La entrada es gratis.");
             }
+            
         } else {
             System.out.println("El precio es " + precio + "euros");
         }
