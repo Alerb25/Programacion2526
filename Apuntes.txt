@@ -23,3 +23,7 @@ en este caso 33/5 son y sobra 3, es decir, el resto son 3
 ----
 Para utilizar los parametros utilizamos args -> variable = args[0];
 los parametros siempre serán string si queremos otro formato hay que convertirlo ej: Integer.parseInt(args[0])
+
+----
+dentro de los ifs se pueden poner break; para que termine el programa (NO ES RECOMENDABLE)
+tambien existe continue; para que siga
