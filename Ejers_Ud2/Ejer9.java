@@ -2,7 +2,7 @@ package Ejers_Ud2;
 
 import java.util.Scanner;
 
-public class precioFinal {
+public class Ejer9 {
     public static void main(String[] args) {
         /*
          * El programa tiene que calcular el precio final de una entrada de cine con las

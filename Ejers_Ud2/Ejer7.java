@@ -2,7 +2,7 @@ package Ejers_Ud2;
 
 import java.util.Scanner;
 
-public class mayorAMenor {
+public class Ejer7 {
    public static void main(String[] args) {
     /*
      * EL código pide que se lean 5 numeros enteros (int)
