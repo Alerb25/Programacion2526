@@ -1,0 +1,25 @@
+Este documento va a recoger todas las notas que he ido poniendo sueltas
+en los ejercicios y en los ejemplos de clase.
+Básicamente es para tenerlos todos bien organizados.
+----
+Para generar un num aleatorio samos el math.random 
+eso genera un num aleatorio entre 0 y 1 tipo float
+para que este en el rango que queramos lo multiplicamos por el max
+para que empiece en 1 le tenemos que sumar 1.
+Para poner un rango se pone seguido Max-Min+1 (esto normalmente se pone en una variable aparte)
+
+----
+
+JOptionPane para que se lea un valor por teclado pero como si fuera una ventana emergente, siempre devuelve string
+para convertir int a String  se pone Integer.valueOf(lo que se quiera convertir)
+        
+Para convertir tipos en java lo más común es usar las funciones parse y valueOF 
+Para comparar String se usa nobreString.equals(frase a la que sea igual)
+
+----
+El operador % es el resto de la división entera,
+en este caso 33/5 son y sobra 3, es decir, el resto son 3
+
+----
+Para utilizar los parametros utilizamos args -> variable = args[0];
+los parametros siempre serán string si queremos otro formato hay que convertirlo ej: Integer.parseInt(args[0])
