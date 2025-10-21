@@ -16,7 +16,7 @@ public class EjemploOperadoresArigmeticos {
         int dobleHijo = edadHijo * 2;
 
         /*
-         * El operador % es el resto de ka duvusuón entera,
+         * El operador % es el resto de la división entera,
          * en este caso 33/5 son y sobra 3, es decir, el resto son 3
          */
         int resto = 33 % 5;
