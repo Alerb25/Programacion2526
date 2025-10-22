@@ -4,24 +4,6 @@ import java.util.Scanner;
 
 public class Ejer9 {
     public static void main(String[] args) {
-        /*
-         * El programa tiene que calcular el precio final de una entrada de cine con las
-         * siguientes reglas:
-         * precio base 12€
-         * si es miercoles y es menor de 25 20% descuento
-         * si es mayor de 65 o estudiante con carnet 15% descuento
-         * Si compra 2 o más entradas y es fin de semana, aplica 10% adicional sobre el
-         * total.
-         * Si es día festivo, no aplica ningún descuento
-         * Solo se aplica el mayor descuento posible, excepto el del “fin de semana +
-         * múltiples entradas”, que se suma al principal si aplica.
-         * Si el cliente tiene discapacidad acreditada, la entrada es gratuita.
-         * (Debes usar variables como: edad, esEstudiante, esFestivo, diaSemana,
-         * numEntradas, tieneDiscapacidad)
-         * 
-         */
-
-        // Para empezar vamos a explicar lo que hace el programa
         System.out.println("Programa Precio Final.");
         System.out.println("--------------------------------");
         System.out.println("");
@@ -30,92 +12,63 @@ public class Ejer9 {
         System.out.println("");
         System.out.println("--------------------------------");
 
-        //Definimos variables
         int edad, numEntradas;
-        String esEstudiante,  tieneDiscapacidad;
+        String esEstudiante, tieneDiscapacidad;
         String diaSemana, esFestivo;
-        float precio = 12;
+        float precioUnitario = 12;
+        float precioFinal;
 
-        //le hacemos todas las preguntas al usuario
         Scanner sc = new Scanner(System.in);
         System.out.println("¿Cuántas entradas quieres?");
-        numEntradas= sc.nextInt();
+        numEntradas = sc.nextInt();
         System.out.println("Por favor, introduce tu edad");
         edad = sc.nextInt();
-        System.out.println("¿Hoy es festivo?");
+        sc.nextLine(); // Limpiar buffer
+        System.out.println("¿Hoy es festivo? (Si/No)");
         esFestivo = sc.nextLine();
-        esFestivo = sc.nextLine();
-        System.out.println("¿Es estudiante?");
+        System.out.println("¿Es estudiante? (Si/No)");
         esEstudiante = sc.nextLine();
         System.out.println("¿Qué día de la semana es hoy?");
         diaSemana = sc.nextLine();
-        System.out.println("¿Tiene discapacidad?");
+        System.out.println("¿Tiene discapacidad? (Si/No)");
         tieneDiscapacidad = sc.nextLine();
 
-        //Empezamos con los casos utilizaré tanto el switch como el if para que sea más cómodo
-        //si es festivo no se aplica nada así que no se cambia el precio.
-        if (esFestivo != "Si"){
-            //si se compra mas de una entrada en finde se aplica 10% de descuento pero es acumulable
-            if (numEntradas > 1){
-                switch (diaSemana) {
-                    case "Sábado":
-                        //se aplica el 10% de descuento
-                        precio = 10.8f;
-                        break;
-                    case "Domingo":
-                        precio = 10.8f;
-                        break;
-                    default:
-                        //no se aplica descuento
-                        break;
-                }
-                System.out.println("El precio es " + precio + " euros.");
+        // Si tiene discapacidad, entrada gratis
+        if (tieneDiscapacidad.equalsIgnoreCase("Si")) {
+            System.out.println("La entrada es GRATUITA.");
+        } else if (esFestivo.equalsIgnoreCase("Si")) {
+            // Si es festivo, no hay descuentos
+            precioFinal = precioUnitario * numEntradas;
+            System.out.println("El precio total es " + precioFinal + " euros.");
+        } else {
+            // Calcular el descuento principal (solo el mayor)
+            float descuentoPrincipal = 0;
+
+            // Miércoles y menor de 25: 20% descuento
+            if (diaSemana.equalsIgnoreCase("Miercoles") && edad < 25) {
+                descuentoPrincipal = 0.20f;
+            }
+            // Mayor de 65 o estudiante: 15% descuento
+            else if (edad > 65 || esEstudiante.equalsIgnoreCase("Si")) {
+                descuentoPrincipal = 0.15f;
             }
 
-            //si es miercoles y eres menor de 25 se aplica el 25%
-            if (edad < 25 && diaSemana == "Miercoles" || edad < 25 && diaSemana == "Miércoles" ){
-                //Se le aplica 25% de descuento
-                precio = 9;
-                 switch (diaSemana) {
-                    case "Sábado":
-                        //se aplica el 10% de descuento
-                        precio = 8.1f;
-                        break;
-                    case "Domingo":
-                        precio = 8.1f;
-                        break;
-                    default:
-                        //no se aplica descuento
-                        break;
-                }
-                System.out.println("El precio es " + precio + " euros.");
+            // Aplicar descuento principal
+            precioUnitario = precioUnitario * (1 - descuentoPrincipal);
+
+            // Calcular precio total
+            precioFinal = precioUnitario * numEntradas;
+
+            // Si compra 2+ entradas y es fin de semana, 10% adicional sobre el total
+            if (numEntradas >= 2 && (diaSemana.equalsIgnoreCase("Sabado") || 
+                                      diaSemana.equalsIgnoreCase("Sábado") || 
+                                      diaSemana.equalsIgnoreCase("Domingo"))) {
+                precioFinal = precioFinal * 0.90f;
             }
-            //Si es mayor de 60 o estudiante tiene 15% descuento
-            if (edad > 60 || esEstudiante == "Si"){
-                precio = 10.20f;
-                switch (diaSemana) {
-                    case "Sábado":
-                        //se aplica el 10% de descuento
-                        precio = 9.18f;
-                        break;
-                    case "Domingo":
-                        precio = 9.18f;
-                        break;
-                    default:
-                        //no se aplica descuento
-                        break;
-                }
-                System.out.println("El precio es " + precio + " euros.");
-            }
-           
-            //si tiene discapacidad es gratis
-            if (tieneDiscapacidad == "Si"){
-                System.out.println("La entrada es gratis.");
-            }
-            
-        } else {
-            System.out.println("El precio es " + precio + "euros");
+
+            System.out.println("El precio total es " + precioFinal + " euros.");
         }
 
+        sc.close();
     }
 }

@@ -27,3 +27,9 @@ los parametros siempre serán string si queremos otro formato hay que convertirl
 ----
 dentro de los ifs se pueden poner break; para que termine el programa (NO ES RECOMENDABLE)
 tambien existe continue; para que siga
+
+----
+Si queremos que el programa lea algún String pero nos preocupamos de como se lea (en vez de no No) podemos poner 
+el nombre de la variable con equalsIgnoreCase("lo que queremos que se lea")
+
+Ej:     nombre.equalsIgnoreCase("Ale")
