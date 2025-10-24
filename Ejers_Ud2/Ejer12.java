@@ -18,6 +18,14 @@ public class Ejer12 {
          int add1= dice1 + dice2 + dice3;
          int add2= dice4+ dice5 +dice6;
 
+        System.out.println("Simulación de Juego.");
+        System.out.println("--------------------------------");
+        System.out.println("");
+        System.out.println("El programa siula dos jugadores jugando a los dados, cada jugador lanza 3 dados y gana o bien el que saque un trío o una pareja o el que tenga la suma más alta.");
+        System.out.println("");
+        System.out.println("--------------------------------");
+
+
         //Las tiradas se tienen que ver siempre
         System.out.println("El jugador 1 ha sacado: "+ dice1 +", "+dice2+" y " +dice3);
         System.out.println("El jugador 2 ha sacado: "+ dice4 +", "+dice5+" y " +dice6);
