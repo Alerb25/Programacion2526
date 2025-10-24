@@ -22,7 +22,7 @@ public class Ejer9 {
         numEntradas = sc.nextInt();
         System.out.println("Por favor, introduce tu edad");
         edad = sc.nextInt();
-        sc.nextLine(); // Limpiar buffer
+        sc.nextLine(); 
         System.out.println("¿Hoy es festivo? (Si/No)");
         esFestivo = sc.nextLine();
         System.out.println("¿Es estudiante? (Si/No)");
