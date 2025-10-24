@@ -35,12 +35,12 @@ public class Ejer12 {
 
          //Detectamos pareja 
          //Nota: en el ejer no se habla nada si ambos jugadores tienen pares pero voy a aplicar la misma logica si sacaran 2 trios
-         boolean pair1 = !threesm1 && (dice1 == dice2 || dice2 == dice3 || dice1 == dice3);
-         boolean pair2 = !threesm2 && (dice4 == dice5 || dice5 == dice6 || dice4 == dice6);
+         boolean pair1 = threesm1 == false && (dice1 == dice2 || dice2 == dice3 || dice1 == dice3);
+         boolean pair2 = threesm2 == false && (dice4 == dice5 || dice5 == dice6 || dice4 == dice6);
          int valPair1 = 0;
         
          //Identificamos cual es la pareja y le damos un valor. 
-         if (pair1 = true){
+         if (pair1 == true){
             if (dice1 == dice2){
                 valPair1 = dice1;
             } else if (dice2 == dice3){
@@ -51,7 +51,7 @@ public class Ejer12 {
          }
 
          int valPair2 = 0;
-          if (pair2 = true){
+          if (pair2 == true){
             if (dice4 == dice5){
                 valPair1 = dice4;
             } else if (dice5 == dice6){
@@ -79,7 +79,7 @@ public class Ejer12 {
             }
         }
 
-        if ( !threesm1 && !threesm2 && !pair1 && !pair2){
+        if ( threesm1 == false && threesm2 == false && pair1 == false && pair2 == false){
             if (add1 >  add2){
                 System.out.println( "El ganador es el Jugador 1 porque ha sacado un total más alto.");
             } else if (add1 < add2){
@@ -87,15 +87,15 @@ public class Ejer12 {
             }
         }
         
-        if ( threesm1 == true && !threesm2){
+        if ( threesm1 == true && threesm2 == false){
             System.out.println( "El ganador es el Jugador 1 porque ha sacado un trío.");
-        }else if (threesm2 == true && !threesm1){
+        }else if (threesm2 == true && threesm1 == false){
             System.out.println( "El ganador es el Jugador 2 porque ha sacado un trío.");
         }
 
-        if ( pair1 == true && !pair2){
+        if ( pair1 == true && pair2 == false){
             System.out.println( "El ganador es el Jugador 1 porque ha sacado una pareja.");
-        }else if (pair2 == true && !pair1){
+        }else if (pair2 == true && pair1 == false){
             System.out.println( "El ganador es el Jugador 2 porque ha sacado una pareja.");
         }
          
