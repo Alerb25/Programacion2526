@@ -1,4 +1,4 @@
-package Ejers_Ud2;
+
 
 import java.util.Scanner;
 

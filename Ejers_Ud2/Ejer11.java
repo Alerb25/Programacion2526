@@ -1,5 +1,4 @@
-public class Ejer11 {
-package Ejers_Ud2;
+
 
 import java.util.Date;
 import java.util.Scanner;
@@ -85,4 +84,4 @@ public class Ejer11 {
         sc.close();
     }
 }
-}
+
