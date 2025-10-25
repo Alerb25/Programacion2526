@@ -11,6 +11,7 @@ public class Ejer9 {
         System.out.println("");
         System.out.println("--------------------------------");
 
+        //Definimos las variables
         int edad, numEntradas;
         String esEstudiante, tieneDiscapacidad;
         String diaSemana, esFestivo;
