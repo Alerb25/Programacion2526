@@ -1,7 +1,7 @@
 package Bucles;
 
 public class Ejer2 {
-    /*
-     * Simulador dados mágicos
-     */
+    public static void main(String[] args) {
+        
+    }
 }
