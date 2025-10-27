@@ -1,8 +1,20 @@
+package Condicionales;
 
 import java.util.Scanner;
 
 public class Ejer9 {
     public static void main(String[] args) {
+        /*
+         * Calcular precio final de una entrada de cine
+         * base 12€
+         * Si es miércoles y el cliente tiene menos de 25 años, descuento del 20%.
+         * Si tiene más de 60 años o es estudiante con carnet, descuento del 15%.
+         * Si compra 2 o más entradas y es fin de semana, aplica 10% adicional sobre el total.
+         * Si es día festivo, no aplica ningún descuento.
+         * Solo se aplica el mayor descuento posible, excepto el del “fin de semana + múltiples entradas”, que se suma al principal si aplica.
+         * Si el cliente tiene discapacidad acreditada, la entrada es gratuita.
+         */
+
         System.out.println("Programa Precio Final.");
         System.out.println("--------------------------------");
         System.out.println("");
@@ -11,6 +23,7 @@ public class Ejer9 {
         System.out.println("");
         System.out.println("--------------------------------");
 
+        //Definimos las variables (como lo dicen en el enunciado)
         int edad, numEntradas;
         String esEstudiante, tieneDiscapacidad;
         String diaSemana, esFestivo;
@@ -22,7 +35,7 @@ public class Ejer9 {
         numEntradas = sc.nextInt();
         System.out.println("Por favor, introduce tu edad");
         edad = sc.nextInt();
-        sc.nextLine(); // Limpiar buffer
+        sc.nextLine(); 
         System.out.println("¿Hoy es festivo? (Si/No)");
         esFestivo = sc.nextLine();
         System.out.println("¿Es estudiante? (Si/No)");
