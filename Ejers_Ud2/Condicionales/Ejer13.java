@@ -1,3 +1,4 @@
+package Condicionales;
 import java.util.Scanner;
 
 public class Ejer13 {
@@ -33,7 +34,7 @@ public class Ejer13 {
         System.out.println("Introduzca la moneda a convertir: ");
         nameDest= sc.nextLine();
 
-        System.out.println("Claculando ....");
+        System.out.println("Calculando ....");
         //Empezamos con las conversiones  
         if ( nameOrigin.equalsIgnoreCase("euros") ){
             if (nameDest.equalsIgnoreCase("libras")){
