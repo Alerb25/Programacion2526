@@ -1,4 +1,4 @@
-package Ud2;
+
 
 public class EjemploBucle {
      public static void main(String[] args) {

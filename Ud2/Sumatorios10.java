@@ -1,4 +1,4 @@
-package Ud2;
+
 
 public class Sumatorios10 {
     public static void main(String[] args) {

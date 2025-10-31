@@ -1,4 +1,4 @@
-package Ud2;
+
 
 public class numMayor {
     public static void main(String[] args) {

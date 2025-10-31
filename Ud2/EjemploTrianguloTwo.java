@@ -14,7 +14,7 @@ public class EjemploTrianguloTwo {
 
         //Dibujamos el triangulo
         for (int i = 0; i<base; i++){
-            for (int j = 0; j < i; j++){
+            for (int j = 0; j < (1+2*i); j++){
                 System.out.println("*");
             }
             System.out.println("");
