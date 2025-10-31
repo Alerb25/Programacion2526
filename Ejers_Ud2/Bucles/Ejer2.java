@@ -26,11 +26,19 @@ public class Ejer2 {
     Scanner sc  = new Scanner(System.in);
     
     //Definimos las variables necesarias
-    int numDice=0, faceDice=0;
+    int numDice=0, faces=0;
     
     System.out.println("¿Cuántos dados?");
     numDice = sc.nextInt();
-    System.out.println("¿De cuantas caras?");
+    
+    //Pido por cada dado el numero de caras
+    for ( int i = 0 ; i < numDice; i++ ){
+        System.out.println("De cuanto es el valor del dado " + (i+1));
+        faces = sc.nextInt();
+
+        int diceRoll = (int) (Math.random()*faces+1);
+    }
+
 
     }
 }
