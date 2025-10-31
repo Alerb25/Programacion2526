@@ -12,15 +12,16 @@ public class EjemploOpcionCorrecta {
 
          String op;
          Scanner sc = new Scanner(System.in);
-         System.out.println("A. salvar el mundo");
-         System.out.println("B. No salvar el mundo");
-         System.out.println("C. Apocalipsis Zombie");
-         System.out.println("D. Muerte y destruccion");
-         System.out.println("Dame una respuesta: ");
-         op = sc.nextLine();
+         
          boolean correct = false;
 
-         while ( correct == false ){
+         do{
+            System.out.println("A. salvar el mundo");
+            System.out.println("B. No salvar el mundo");
+            System.out.println("C. Apocalipsis Zombie");
+            System.out.println("D. Muerte y destruccion");
+            System.out.println("Dame una respuesta: ");
+            op = sc.nextLine();
                    
             switch (op) {
                 case "a":
@@ -47,17 +48,8 @@ public class EjemploOpcionCorrecta {
                     break;
                     
             }
-            if (op == "b" || op == "B" || op == "c" || op == "C" || op == "d" || op == "D"){
-                System.out.println("");
-                System.out.println("-----------------------");
-                System.out.println("A. salvar el mundo");
-                System.out.println("B. No salvar el mundo");
-                System.out.println("C. Apocalipsis Zombie");
-                System.out.println("D. Muerte y destruccion");
-                System.out.println("Dame una respuesta: ");
-                op = sc.nextLine();
-            }
-         }
+           
+         }while ( correct == false);
         
                
          
