@@ -30,6 +30,7 @@ public class Ejer3 {
      pizzas = sc.nextInt();
 
      if (pizzas > employee){
+        div = pizzas / employee;
         
      }
 
