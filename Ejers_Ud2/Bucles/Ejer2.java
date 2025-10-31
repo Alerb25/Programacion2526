@@ -74,5 +74,6 @@ public class Ejer2 {
         System.out.println("Total de Críticos Naturales: " + critic);
     }
 
+    sc.close();
     }
 }
