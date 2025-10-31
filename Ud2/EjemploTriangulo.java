@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class EjemploTrianguloTwo {
+public class EjemploTriangulo {
     public static void main(String[] args) {
         /*
          * Leer la base del triángulo 
