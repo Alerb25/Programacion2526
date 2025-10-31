@@ -26,8 +26,8 @@ public class Ejer2 {
     Scanner sc  = new Scanner(System.in);
     
     //Definimos las variables necesarias
-    int numDice=0, faces=0, firstRoll=0, add=0;
-    boolean allmax = true, alleq = true;
+    int numDice=0, faces=0, firstRoll=0, add=0, critic=0;
+    boolean  alleq = true;
     
     System.out.println("¿Cuántos dados?");
     numDice = sc.nextInt();
@@ -53,8 +53,8 @@ public class Ejer2 {
         }
 
         //por si no hay criticos naturales
-        if (diceRoll != faces){
-            allmax = false;
+        if (diceRoll == faces){
+            critic ++;
         }
     }
 
@@ -70,8 +70,8 @@ public class Ejer2 {
         System.out.println("No ha habido tirada épica");
     }
 
-    if (allmax){
-        System.out.println("Ha habido Crítico Natural");
+    if (critic >= 0){
+        System.out.println("Total de Críticos Naturales: " + critic);
     }
 
     }
