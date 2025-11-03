@@ -30,8 +30,23 @@ public class Ejer3 {
      pizzas = sc.nextInt();
 
      if (pizzas > employee){
+      //la division es las pizzas entre los empleados y ahora dependiendo de lo que salga ps se pintan los * 
         div = pizzas / employee;
         
+        for (int j = 1; j < employee; j++ ){
+         System.out.print("El empleado " + (j) + ": ");
+         for ( int i  = 0;  i != div; i++){
+          System.out.print("*");
+         }
+         System.out.println("");
+        }
+
+        System.out.println("El resto es " +(pizzas%employee));   
+        
+        
+        
+     } else  {
+       System.out.println("No se puede hacer la division :c");
      }
 
     }
