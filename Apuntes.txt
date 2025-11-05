@@ -35,7 +35,7 @@ el nombre de la variable con equalsIgnoreCase("lo que queremos que se lea")
 Ej:     nombre.equalsIgnoreCase("Ale")
 
 ----
-Un ArrayList no es como un Arry anidado, sino que es una version más flexible, es decir, los arrays tienen un tamaño fijo los ArrayList no
+Un ArrayList no es como un Array anidado, sino que es una version más flexible, es decir, los arrays tienen un tamaño fijo los ArrayList no
 La sintaxis tb cambia ArrayList<tipoVar> nombre = new ArrayList<>();
 Los ArrayList usan metodos (porque es una utilidad de java que esta en su biblioteca estandar)
 para ver el tamaño es nombre.size()
