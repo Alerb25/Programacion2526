@@ -2,7 +2,7 @@ Este documento va a recoger todas las notas que he ido poniendo sueltas
 en los ejercicios y en los ejemplos de clase.
 Básicamente es para tenerlos todos bien organizados.
 ----
-Para generar un num aleatorio samos el math.random 
+Para generar un num aleatorio usamos el math.random 
 eso genera un num aleatorio entre 0 y 1 tipo float
 para que este en el rango que queramos lo multiplicamos por el max
 para que empiece en 1 le tenemos que sumar 1.
