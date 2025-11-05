@@ -1,5 +1,6 @@
 package Bucles;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Ejer6 {
@@ -42,12 +43,15 @@ public class Ejer6 {
             switch (answer) {
                 case "1":
                     //Haremos varios Arrays para poder guardar varios datos en un mismo sitio
-                    String names[], genres[];
+                    ArrayList<String> names = new ArrayList<>();
+                    ArrayList<String>  genres = new ArrayList<>();
                     int seasons[], score[], year[];
 
                     //Se lo pedimos al usuario
                     System.out.println("Introduzca el nombre de la serie: ");
                     info = sc.nextLine();
+                    names.add(info);
+
                      
                     break;
             
