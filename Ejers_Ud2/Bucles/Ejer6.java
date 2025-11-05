@@ -34,7 +34,7 @@ public class Ejer6 {
             System.out.println("");
             System.out.println("1. Añadir serie.");
             System.out.println("2. Encontrar la serie más larga.");
-            System.out.println("3. Calclar promedio por género.");
+            System.out.println("3. Calcular promedio por género.");
             System.out.println("4. Crear Maraton perfecto.");
             System.out.println("5. Mostrar Joyas Ocultas");
             System.out.println("Salir");
@@ -85,8 +85,8 @@ public class Ejer6 {
                     genres = newGenres;
                     
                     //temporadas
-                     System.out.println("Introduzca el numero de temporada de la serie: ");
-                    infoString = sc.nextLine();
+                    System.out.println("Introduzca el numero de temporada de la serie: ");
+                    infoInt = sc.nextInt();
                     //copiar datos metidos en names a newNames para poder ñadir mas datos
                     for (int i = 0; i < seasons.length ; i++){
                         newSeasons[i] = seasons[i];
@@ -98,9 +98,39 @@ public class Ejer6 {
                     //convertimos newnames a names
                     seasons = newSeasons;
 
+                    //puntuacion
+                    System.out.println("Introduzca la puntuacion de la serie: ");
+                    infoInt = sc.nextInt();
+                    //copiar datos metidos en names a newNames para poder ñadir mas datos
+                    for (int i = 0; i < score.length ; i++){
+                        newScore[i] = score[i];
+                    }
+
+                    //añadir nuevos datos en newNAes
+                    newScore[score.length] = infoInt;
+
+                    //convertimos newnames a names
+                    score = newScore;
+
+                    //año
+                    System.out.println("Introduzca el año que salio la serie: ");
+                    infoInt = sc.nextInt();
+                    //copiar datos metidos en names a newNames para poder ñadir mas datos
+                    for (int i = 0; i < year.length ; i++){
+                        newYear[i] = year[i];
+                    }
+
+                    //añadir nuevos datos en newNAes
+                    newYear[year.length] = infoInt;
+
+                    //convertimos newnames a names
+                    year = newYear;
+
                     break;
             
-                default:
+                case "2":
+                
+                    default:
                 System.err.println("Opcion no valida");
                     break;
             }
