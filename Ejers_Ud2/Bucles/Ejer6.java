@@ -25,7 +25,8 @@ public class Ejer6 {
 
         //Definimos variables
         Scanner sc = new Scanner(System.in);
-        String answer= "", info = "";
+        String answer= "", infoString = "";
+        int infoInt = 0;
 
 
 
@@ -43,16 +44,60 @@ public class Ejer6 {
             switch (answer) {
                 case "1":
                     //Haremos varios Arrays para poder guardar varios datos en un mismo sitio
-                    ArrayList<String> names = new ArrayList<>();
-                    ArrayList<String>  genres = new ArrayList<>();
-                    int seasons[], score[], year[];
+                    String names[] = new String[0];
+                    String newNames [] = new String[ names.length +1];
+                    String genres[] = new String[0];
+                    String newGenres[] = new String[ genres.length +1];
+                    int seasons[] = new int[0];
+                    int newSeasons [] = new int[ seasons.length +1 ];
+                    int score[] = new int[0];
+                    int newScore[] = new int[ score.length +1];
+                    int year[] = new int[0];
+                    int newYear[] = new int[ year.length +1];
 
                     //Se lo pedimos al usuario
                     System.out.println("Introduzca el nombre de la serie: ");
-                    info = sc.nextLine();
-                    names.add(info);
+                    infoString = sc.nextLine();
+                    //copiar datos metidos en names a newNames para poder ñadir mas datos
+                    for (int i = 0; i < names.length ; i++){
+                        newNames[i] = names [i];
+                    }
 
-                     
+                    //añadir nuevos datos en newNAes
+                    newNames[names.length] = infoString;
+
+                    //convertimos newnames a names
+                    names = newNames;
+
+                    //Repetir con todas las preguntas
+                    //Genero de las series
+                    System.out.println("Introduzca el género de la serie: ");
+                    infoString = sc.nextLine();
+                    //copiar datos metidos en names a newNames para poder ñadir mas datos
+                    for (int i = 0; i < genres.length ; i++){
+                        newGenres[i] = genres [i];
+                    }
+
+                    //añadir nuevos datos en newNAes
+                    newGenres[genres.length] = infoString;
+
+                    //convertimos newnames a names
+                    genres = newGenres;
+                    
+                    //temporadas
+                     System.out.println("Introduzca el numero de temporada de la serie: ");
+                    infoString = sc.nextLine();
+                    //copiar datos metidos en names a newNames para poder ñadir mas datos
+                    for (int i = 0; i < seasons.length ; i++){
+                        newSeasons[i] = seasons[i];
+                    }
+
+                    //añadir nuevos datos en newNAes
+                    newSeasons[seasons.length] = infoInt;
+
+                    //convertimos newnames a names
+                    seasons = newSeasons;
+
                     break;
             
                 default:
