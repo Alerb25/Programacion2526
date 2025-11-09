@@ -39,3 +39,10 @@ Un ArrayList no es como un Arry anidado, sino que es una version más flexible, 
 La sintaxis tb cambia ArrayList<tipoVar> nombre = new ArrayList<>();
 Los ArrayList usan metodos (porque es una utilidad de java que esta en su biblioteca estandar)
 para ver el tamaño es nombre.size()
+
+----
+for (String nombre : nombres) {
+  System.out.println(nombre);
+}
+
+El : separa la variable que almacenara cada elemento sobre el que se va a iterar
