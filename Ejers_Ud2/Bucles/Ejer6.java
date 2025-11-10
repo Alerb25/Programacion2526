@@ -27,6 +27,18 @@ public class Ejer6 {
         Scanner sc = new Scanner(System.in);
         String answer= "", infoString = "";
         int infoInt = 0;
+         //Haremos varios Arrays para poder guardar varios datos en un mismo sitio
+                    String names[] = new String[0];
+                    String newNames [] = new String[ names.length +1];
+                    String genres[] = new String[0];
+                    String newGenres[] = new String[ genres.length +1];
+                    int seasons[] = new int[0];
+                    int newSeasons [] = new int[ seasons.length +1 ];
+                    int score[] = new int[0];
+                    int newScore[] = new int[ score.length +1];
+                    int year[] = new int[0];
+                    int newYear[] = new int[ year.length +1];
+
 
 
 
@@ -43,18 +55,7 @@ public class Ejer6 {
             //Creamos el menu de inicio con switch
             switch (answer) {
                 case "1":
-                    //Haremos varios Arrays para poder guardar varios datos en un mismo sitio
-                    String names[] = new String[0];
-                    String newNames [] = new String[ names.length +1];
-                    String genres[] = new String[0];
-                    String newGenres[] = new String[ genres.length +1];
-                    int seasons[] = new int[0];
-                    int newSeasons [] = new int[ seasons.length +1 ];
-                    int score[] = new int[0];
-                    int newScore[] = new int[ score.length +1];
-                    int year[] = new int[0];
-                    int newYear[] = new int[ year.length +1];
-
+                   
                     //Se lo pedimos al usuario
                     System.out.println("Introduzca el nombre de la serie: ");
                     infoString = sc.nextLine();
@@ -92,7 +93,7 @@ public class Ejer6 {
                         newSeasons[i] = seasons[i];
                     }
 
-                    //añadir nuevos datos en newNAes
+                    //añadir nuevos datos en newSeasons
                     newSeasons[seasons.length] = infoInt;
 
                     //convertimos newnames a names
@@ -106,7 +107,7 @@ public class Ejer6 {
                         newScore[i] = score[i];
                     }
 
-                    //añadir nuevos datos en newNAes
+                    //añadir nuevos datos en NewScore 
                     newScore[score.length] = infoInt;
 
                     //convertimos newnames a names
@@ -120,7 +121,7 @@ public class Ejer6 {
                         newYear[i] = year[i];
                     }
 
-                    //añadir nuevos datos en newNAes
+                    //añadir nuevos datos en newNYear
                     newYear[year.length] = infoInt;
 
                     //convertimos newnames a names
@@ -129,7 +130,61 @@ public class Ejer6 {
                     break;
             
                 case "2":
-                
+                    //leer todas las temporadas de las series y encontrar el que sea mas larga
+                    int position = 0;
+                    for (int i = 1; i < seasons.length; i++){
+                        if (seasons[i] > seasons[position]){
+                            position = i;
+                        }
+                    }
+
+                        System.out.println("La serie más larga es " + names[position]);
+                break;
+                case "3":
+                    //calcular el promedio de un género
+                    //vamos a ver primero un bucle para mirar cuantas palabras se repiten
+                    boolean[] count = new boolean[genres.length];
+                    for (int i=0; i < genres.length; i++){
+                        if (count[i]){
+                            continue;
+                        }
+
+                        int counter = 1;
+                        for (int j= i+1; j< genres.length; j++){
+                            if(genres[i].equals(genres[j])){
+                                counter++;
+                                count[j]=true;
+                            }
+                        }
+
+                        //ahora que tenemos cuantas veces se repite cada genero podemos calcular un promedio (TotalRepetidas/generos)
+                        int average = counter / genres.length;
+                        System.out.println("El promedio de " + genres[i] + " es " + average);
+                    }
+
+                   
+                break;
+                case "4":
+                    //las temporadas tienen que sumar 8 horas
+                    for (int i=0; i< names.length; i++){
+                        System.out.println("¿"+names[i]+" su temporada suma 8 horas?");
+                        answer = sc.nextLine();
+                        if (answer.equalsIgnoreCase("si")){
+                            System.out.println(names[i]+" es el maraton perfecto.");
+                        }
+                    }
+                break;
+                case "5":
+                    for (int i= 0; i < score.length; i++){
+                        if (score[i] > 8  && seasons[i] < 3){
+                            System.out.println(names[i]+" es una joya oculta.");
+                        }
+                    }
+                break;
+                case "salir":
+                case "Salir":
+                    System.out.println("Saliendo del programa.");
+                break;
                     default:
                 System.err.println("Opcion no valida");
                     break;
