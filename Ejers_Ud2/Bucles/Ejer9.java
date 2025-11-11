@@ -17,7 +17,7 @@ public class Ejer9 {
                 
         Scanner sc = new Scanner(System.in);
         
-        // Board 8x8 (0 = water, 1 = ship, -1 = hit)
+        //Tablero 8x8 (0 = agua, 1 = barco, -1 = hit)
         int[][] board = {
             {0, 1, 0, 0, 0, 0, 1, 0},
             {0, 1, 0, 1, 1, 0, 1, 0},
@@ -29,7 +29,7 @@ public class Ejer9 {
             {0, 0, 0, 0, 0, 0, 0, 0}
         };
         
-        // Count number of ships
+        // contar el numero de barcos
         int numShips = 0;
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
@@ -43,7 +43,7 @@ public class Ejer9 {
         System.out.println("Numero de casillas con barco: " + numShips);
         System.out.println();
         
-        // Main game loop
+       
         boolean playing = true;
         int shipsRemaining = numShips;
         
@@ -51,22 +51,22 @@ public class Ejer9 {
             System.out.println("Barcos restantes: " + shipsRemaining);
             System.out.println();
             
-            // Show board (hidden)
+            // enseñar el tablero
             System.out.println("  1 2 3 4 5 6 7 8");
             for (int i = 0; i < 8; i++) {
                 System.out.print((i + 1) + " ");
                 for (int j = 0; j < 8; j++) {
                     if (board[i][j] == -1) {
-                        System.out.print("X "); // Hit
+                        System.out.print("X "); // cuando le das un hit aparece una cruz
                     } else {
-                        System.out.print("~ "); // Water (hides ships)
+                        System.out.print("~ "); 
                     }
                 }
                 System.out.println();
             }
             System.out.println();
             
-            // Ask for coordinates
+            // pedirle al usuario las coordenadas
             System.out.print("Introduce fila (1-8, 0 para salir): ");
             int row = sc.nextInt();
             
@@ -79,21 +79,21 @@ public class Ejer9 {
             System.out.print("Introduce columna (1-8): ");
             int col = sc.nextInt();
             
-            // Validate coordinates
+            
             if (row < 1 || row > 8 || col < 1 || col > 8) {
                 System.out.println("Error: Las coordenadas deben estar entre 1 y 8");
                 System.out.println();
                 continue;
             }
             
-            // Convert to array indices (0-7)
+           
             int r = row - 1;
             int c = col - 1;
             
-            // Check shot
+            // verificar si el usuario le ha dado
             if (board[r][c] == 1) {
                 System.out.println("Tocado!");
-                board[r][c] = -1; // Mark as hit
+                board[r][c] = -1; //marcar si si le ha dado
                 shipsRemaining--;
                 
                 if (shipsRemaining == 0) {
