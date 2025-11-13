@@ -21,8 +21,7 @@ public class Ejer4 {
         System.out.println("Programa Tragaperras.");
         System.out.println("--------------------------------");
         System.out.println("");
-        System.out.println(
-                "Igual que una máquina tragaperras vamos a ver como ruedan los rodillos y a ver si hay suerte");
+        System.out.println("Igual que una máquina tragaperras vamos a ver como ruedan los rodillos y a ver si hay suerte");
         System.out.println("Usted empieza con 100 monedas y cada tirada cuesta 5 monedas");
         System.out.println("");
         System.out.println("--------------------------------");
