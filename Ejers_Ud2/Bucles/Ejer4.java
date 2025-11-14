@@ -46,7 +46,7 @@ public class Ejer4 {
             // Aqui le tenemos que restar 5 a las monedas y hacer las tiradas
             money -= 5;
 
-            // Para las tiradas, tiene que ser del 1-4 y el 7 / se repite 3 veces
+            // Para las tiradas, tiene que ser del 1-5 y el 7 / se repite 3 veces
             
                 int r1 = (int) (Math.random() * 6 + 1);
                 int r2 = (int) (Math.random() * 6 + 1);
