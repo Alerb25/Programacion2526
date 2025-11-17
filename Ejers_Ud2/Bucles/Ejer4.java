@@ -21,8 +21,7 @@ public class Ejer4 {
         System.out.println("Programa Tragaperras.");
         System.out.println("--------------------------------");
         System.out.println("");
-        System.out.println(
-                "Igual que una máquina tragaperras vamos a ver como ruedan los rodillos y a ver si hay suerte");
+        System.out.println( "Igual que una máquina tragaperras vamos a ver como ruedan los rodillos y a ver si hay suerte");
         System.out.println("Usted empieza con 100 monedas y cada tirada cuesta 5 monedas");
         System.out.println("");
         System.out.println("--------------------------------");
@@ -47,7 +46,7 @@ public class Ejer4 {
             // Aqui le tenemos que restar 5 a las monedas y hacer las tiradas
             money -= 5;
 
-            // Para las tiradas, tiene que ser del 1-4 y el 7 / se repite 3 veces
+            // Para las tiradas, tiene que ser del 1-5 y el 7 / se repite 3 veces
             
                 int r1 = (int) (Math.random() * 6 + 1);
                 int r2 = (int) (Math.random() * 6 + 1);
