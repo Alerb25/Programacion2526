@@ -20,7 +20,7 @@ public class Instrumento {
     public static final int ENCONTRADO_EN_MARTE = 4;
 
 
-    //Constructor de todos los parametros vacio
+    //Constructor de todos los parametros 
     public Instrumento(String nombre, int tipo, int volumen, double nivelDistorision, int rareza, boolean enUso){
         this.nombre = nombre;
         this.tipo = tipo;
@@ -32,6 +32,13 @@ public class Instrumento {
     }
     
     //constructor con valores aleatorios (volumen entre 20-150, distorsion entre 0.0-10.0, uso = false)
-
+    public Instrumento(){
+        this.nombre = nombre;
+        this.tipo = tipo;
+        this.volumen = (int) (Math.random() * (20-150+1))+20;
+        this.nivelDistorision = (int) (Math.random() * 10.0)+1.0;
+        this.rareza = rareza;
+        this.enUso = false;
+    }
 
 }
