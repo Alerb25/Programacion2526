@@ -1,10 +1,10 @@
 public class Artista {
-    String nombreArtistico;
-int generoMusical;
-int nivel; 	 // nivel de fama
-int energia;  // de 0 a 100
-int seguidores;
-ArrayList<Instrumento> instrumentos; 
+private String nombreArtistico;
+private int generoMusical;
+private int nivel; 	 // nivel de fama
+private int energia;  // de 0 a 100
+private int seguidores;
+private ArrayList<Instrumento> instrumentos; 
  boolean enGira;
 
  public static final int DEATH_METAL_COSMICO 	= 1, REGGAETON_MARCIANO = 2, 	JAZZ_CUANTICO = 3, POLKA_INTERGALACTICA 	= 4, TRAP_ESPACIAL = 5;
@@ -78,5 +78,5 @@ ArrayList<Instrumento> instrumentos;
  public boolean getEnGira(){
      return this.enGira;
  }
- 
+
 }
