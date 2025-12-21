@@ -30,5 +30,53 @@ ArrayList<Instrumento> instrumentos;
      this.seguidores = seguidores;
      this.instrumentos = instrumentos;
      this.enGira = enGira;
+
+     //setters
+     public void setNombreArtistico(String nombreArtistico){
+         this.nombreArtistico = nombreArtistico;
+     }
+     public void setGeneroMusical(int generoMusical){
+         this.generoMusical = generoMusical;
+     }
+     public void setNivel(int nivel){
+         this.nivel = nivel;
+     }
+     public void setEnergia(int energia){
+         this.energia = energia;
+     }
+     public void setSeguidores(int seguidores){
+         this.seguidores = seguidores;
+     }
+     public void setInstrumentos(ArrayList<Instrumento> instrumentos){
+         this.instrumentos = instrumentos;
+     }
+     public void setEnGira(boolean enGira){
+         this.enGira = enGira;
+     }
+
+
+
+ //getters
+ public String getNombreArtistico(){
+     return this.nombreArtistico;   
  }
+ public int getGeneroMusical(){
+     return this.generoMusical;
+ }
+ public int getNivel(){
+     return this.nivel;
+ }
+ public int getEnergia(){
+     return this.energia;
+ }
+ public int getSeguidores(){
+     return this.seguidores;
+ }
+ public ArrayList<Instrumento> getInstrumentos(){
+     return this.instrumentos;
+ }
+ public boolean getEnGira(){
+     return this.enGira;
+ }
+ 
 }
