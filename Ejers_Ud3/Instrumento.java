@@ -33,11 +33,11 @@ public class Instrumento {
     // constructor con valores aleatorios (volumen entre 20-150, distorsion entre
     // 0.0-10.0, uso = false)
     public Instrumento() {
-        this.nombre = nombre;
+        this.nombre = (int) (Math.random() * 5) + 1;
         this.tipo = tipo;
         this.volumen = (int) (Math.random() * (20 - 150 + 1)) + 20;
-        this.nivelDistorision = (int) (Math.random() * 10.0) + 1.0;
-        this.rareza = rareza;
+        this.nivelDistorision = (double) (Math.random() * 10.0) + 1.0;
+        this.rareza = (int) (Math.random() * 4) + 1;
         this.enUso = false;
     }
 
