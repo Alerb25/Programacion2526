@@ -23,4 +23,21 @@ public class Escenario {
       this.aforoMax = aforoMax;
       this.efectosEspeciales = false;
     }
+     
+    //getters y setters
+      public String getNombre(){
+        return nombre;
+      }
+      public int getTipoEscenario(){
+        return tipoEscenario;
+      }
+      public int getAforoMax(){
+        return aforoMax;
+      }
+      public boolean getEfectosEspeciales(){
+        return efectosEspeciales;
+      }
+
+    
+
 }

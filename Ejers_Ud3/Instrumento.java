@@ -89,4 +89,22 @@ public class Instrumento {
     public void setEnUso(boolean enUso) {
         this.enUso = enUso;
     }
+
+
+    //metodo hackear
+    public boolean hackear(){
+        if (rareza == 4){
+            return false;
+    }else {
+        
+        if(volumen < 150){
+            volumen = volumen*0.25 + volumen;
+            if (volumen >= 150){
+                volumen = 150;
+            }
+        }
+        rareza = rareza + 1;
+        return true;
+    }
+}
 }
