@@ -90,21 +90,45 @@ public class Instrumento {
         this.enUso = enUso;
     }
 
-
-    //metodo hackear
-    public boolean hackear(){
-        if (rareza == 4){
+    // metodo hackear
+    public boolean hackear() {
+        if (rareza == 4) {
             return false;
-    }else {
-        
-        if(volumen < 150){
-            volumen = volumen*0.25 + volumen;
-            if (volumen >= 150){
-                volumen = 150;
+        } else {
+
+            if (volumen < 150) {
+                volumen = volumen * 0.25 + volumen;
+                if (volumen >= 150) {
+                    volumen = 150;
+                }
             }
+            rareza = rareza + 1;
+            return true;
         }
-        rareza = rareza + 1;
-        return true;
     }
-}
+
+    // compatibilidad
+    public boolean compatibilidad(Artista artista) {
+        int generoMusical = artista.getGenero();
+
+        switch (generoMusical) {
+            case DEATH_METAL_COSMICO:
+                return (this.tipo == GUITARRA_LASER || this.tipo == BATERIA_CUANTICA);
+
+            case REGGAETON_MARCIANO:
+                return (this.tipo == SINTETIZADOR_ESPACIAL || this.tipo == BATERIA_CUANTICA);
+
+            case JAZZ_CUANTICO:
+                return (this.tipo == THEREMIN_ATOMICO || this.tipo == SINTETIZADOR_ESPACIAL);
+
+            case POLKA_INTERGALACTICA:
+                return (this.tipo == KAZOO_LEGENDARIO || this.tipo == THEREMIN_ATOMICO);
+
+            case TRAP_ESPACIAL:
+                return (this.tipo == SINTETIZADOR_ESPACIAL || this.tipo == BATERIA_CUANTICA);
+
+            default:
+                return false;
+        }
+    }
 }
