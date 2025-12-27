@@ -24,61 +24,89 @@ public class Artista {
     }
 
     // constructor con parametros
- public Artista(String nombreArtistico, int generoMusical, int nivel, int energia, int seguidores, ArrayList<Instrumento> instrumentos, boolean enGira){
-     this.nombreArtistico = nombreArtistico;
-     this.generoMusical = generoMusical;
-     this.nivel = nivel;
-     this.energia = energia;
-     this.seguidores = seguidores;
-     this.instrumentos = instrumentos;
-     this.enGira = enGira;
- }
-     //setters
-     public void setNombreArtistico(String nombreArtistico){
-         this.nombreArtistico = nombreArtistico;
-     }
-     public void setGeneroMusical(int generoMusical){
-         this.generoMusical = generoMusical;
-     }
-     public void setNivel(int nivel){
-         this.nivel = nivel;
-     }
-     public void setEnergia(int energia){
-         this.energia = energia;
-     }
-     public void setSeguidores(int seguidores){
-         this.seguidores = seguidores;
-     }
-     public void setInstrumentos(ArrayList<Instrumento> instrumentos){
-         this.instrumentos = instrumentos;
-     }
-     public void setEnGira(boolean enGira){
-         this.enGira = enGira;
-     }
+    public Artista(String nombreArtistico, int generoMusical, int nivel, int energia, int seguidores,
+            ArrayList<Instrumento> instrumentos, boolean enGira) {
+        this.nombreArtistico = nombreArtistico;
+        this.generoMusical = generoMusical;
+        this.nivel = nivel;
+        this.energia = energia;
+        this.seguidores = seguidores;
+        this.instrumentos = instrumentos;
+        this.enGira = enGira;
+    }
 
+    // setters
+    public void setNombreArtistico(String nombreArtistico) {
+        this.nombreArtistico = nombreArtistico;
+    }
 
+    public void setGeneroMusical(int generoMusical) {
+        this.generoMusical = generoMusical;
+    }
 
- //getters
- public String getNombreArtistico(){
-     return this.nombreArtistico;   
- }
- public int getGeneroMusical(){
-     return this.generoMusical;
- }
- public int getNivel(){
-     return this.nivel;
- }
- public int getEnergia(){
-     return this.energia;
- }
- public int getSeguidores(){
-     return this.seguidores;
- }
- public ArrayList<Instrumento> getInstrumentos(){
-     return this.instrumentos;
- }
- public boolean getEnGira(){
-     return this.enGira;
- }
+    public void setNivel(int nivel) {
+        this.nivel = nivel;
+    }
+
+    public void setEnergia(int energia) {
+        if ( energia >= 0){
+        this.energia = energia;
+        }
+    }
+
+    public void setSeguidores(int seguidores) {
+        this.seguidores = seguidores;
+    }
+
+    public void setInstrumentos(ArrayList<Instrumento> instrumentos) {
+        this.instrumentos = instrumentos;
+    }
+
+    public void setEnGira(boolean enGira) {
+        this.enGira = enGira;
+    }
+
+    // getters
+    public String getNombreArtistico() {
+        return this.nombreArtistico;
+    }
+
+    public int getGeneroMusical() {
+        return this.generoMusical;
+    }
+
+    public int getNivel() {
+        return this.nivel;
+    }
+
+    public int getEnergia() {
+        return this.energia;
+    }
+
+    public int getSeguidores() {
+        return this.seguidores;
+    }
+
+    public ArrayList<Instrumento> getInstrumentos() {
+        return this.instrumentos;
+    }
+
+    public boolean getEnGira() {
+        return this.enGira;
+    }
+
+    // metodo tocar instrumento
+    public boolean tocarInstrumento(Instrumento i) {
+        if (i.compatibilidad == true || i.getEnUso == false){
+            if (energia >= 20){
+                instrumentos.add();
+                instrumento.setEnUso(true);
+                return true;
+            }
+
+        }else {
+            return false;
+        }
+    }
 
 }
