@@ -49,8 +49,8 @@ public class Artista {
     }
 
     public void setEnergia(int energia) {
-        if ( energia >= 0){
-        this.energia = energia;
+        if (energia >= 0) {
+            this.energia = energia;
         }
     }
 
@@ -97,16 +97,84 @@ public class Artista {
 
     // metodo tocar instrumento
     public boolean tocarInstrumento(Instrumento i) {
-        if (i.compatibilidad == true || i.getEnUso == false){
-            if (energia >= 20){
+        if (i.compatibilidad == true || i.getEnUso == false) {
+            // la energia por encima de 20 sino no puede tocar
+            if (energia >= 20) {
+                // se añade el instrumento
                 instrumentos.add();
+                // se pone en true el uso
                 instrumento.setEnUso(true);
                 return true;
             }
 
-        }else {
+        } else {
             return false;
         }
+    }
+
+    // metodo dejarInstrumento
+    public Instrumento dejarInstrumento(String nombreInstrumento) {
+
+        // Buscar el instrumento en la lista
+        for (int i = 0; i < instrumentos.size(); i++) {
+            Instrumento inst = instrumentos.get(i);
+
+            // Si encuentra uno con ese nombre
+            if (inst.getNombre().equals(nombreInstrumento)) {
+                // Marcarlo como no en uso
+                inst.setEnUso(false);
+
+                // Eliminarlo de la lista
+                instrumentos.remove(i);
+
+                // Recuperar 10 de energía (sin pasarse de 100)
+                this.energia = Math.min(this.energia + 10, 100);
+
+                // Devolverlo
+                return inst;
+            }
+        }
+
+        return null;
+    }
+
+    // Método subirFama
+    public void subirFama() {
+        this.nivel++;
+        this.energia = Math.min(this.energia + 20, MAXIMA);
+        this.seguidores += 1000;
+    }
+
+    // Método darConcierto
+    public void darConcierto(int asistentes) {
+        // Sumar seguidores
+        this.seguidores += (asistentes / 10);
+
+        // Restar energía
+        this.energia -= 30;
+
+        // Si tiene suficientes seguidores, sube de fama
+        if (this.seguidores >= 10000) {
+            subirFama();
+        }
+    }
+
+    // Método obtenerInstrumentosMarcianos
+    public ArrayList<Instrumento> obtenerInstrumentosMarcianos() {
+        return instrumentos.stream()
+                .filter(inst -> inst.getRareza() == Instrumento.ENCONTRADO_EN_MARTE)
+                .collect(Collectors.toList());
+    }
+
+    // Método calcularPoderEscenico
+    public int calcularPoderEscenico() {
+        // Sumar el volumen de todos los instrumentos usando streams
+        int volumenTotal = instrumentos.stream()
+                .mapToInt(inst -> inst.getVolumen())
+                .sum();
+
+        // Calcular el poder escénico
+        return volumenTotal + (this.nivel * 50) + (this.energia * 2);
     }
 
 }
