@@ -34,10 +34,10 @@ public class Instrumento {
 
     // constructor con valores aleatorios (volumen entre 20-150, distorsion entre 0.0-10.0, uso = false)
     public Instrumento() {
-        this.nombre = generarNombreAleatorio(); // CORREGIDO
-        this.tipo = (int) (Math.random() * 5) + 1; // CORREGIDO
-        this.volumen = (int) (Math.random() * (150 - 20 + 1)) + 20; // CORREGIDO
-        this.nivelDistorision = (double) (Math.random() * 10.0); // CORREGIDO (0.0 a 10.0)
+        this.nombre = generarNombreAleatorio(); 
+        this.tipo = (int) (Math.random() * 5) + 1; 
+        this.volumen = (int) (Math.random() * (150 - 20 + 1)) + 20; 
+        this.nivelDistorision = (double) (Math.random() * 10.0); 
         this.rareza = (int) (Math.random() * 4) + 1;
         this.enUso = false;
     }
@@ -152,7 +152,7 @@ public class Instrumento {
             return false;
         } else {
             if (volumen < 150) {
-                volumen = (int) (volumen * 1.25); // CORREGIDO: es multiplicar por 1.25, no sumar 0.25
+                volumen = (int) (volumen * 1.25); 
                 if (volumen > 150) {
                     volumen = 150;
                 }
@@ -164,10 +164,10 @@ public class Instrumento {
 
     // compatibilidad
     public boolean compatibilidad(Artista artista) {
-        int generoMusical = artista.getGeneroMusical(); // CORREGIDO: debe ser getGeneroMusical()
+        int generoMusical = artista.getGeneroMusical(); 
 
         switch (generoMusical) {
-            case Artista.DEATH_METAL_COSMICO: // AÑADIDO: Artista. para las constantes
+            case Artista.DEATH_METAL_COSMICO: 
                 return (this.tipo == GUITARRA_LASER || this.tipo == BATERIA_CUANTICA);
 
             case Artista.REGGAETON_MARCIANO:

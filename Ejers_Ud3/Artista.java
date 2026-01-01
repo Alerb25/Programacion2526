@@ -2,6 +2,7 @@
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.stream.Collectors;
+
 public class Artista {
     private String nombreArtistico;
     private int generoMusical;
@@ -101,19 +102,20 @@ public class Artista {
 
     // metodo tocar instrumento
     public boolean tocarInstrumento(Instrumento i) {
-        if (i.compatibilidad == true || i.getEnUso == false) {
-            // la energia por encima de 20 sino no puede tocar
+        // Verificar compatibilidad Y que no esté en uso
+        if (i.compatibilidad(this) == true && i.getEnUso() == false) {
+            // La energía debe estar por encima de 20 sino no puede tocar
             if (energia >= 20) {
-                // se añade el instrumento
-                instrumentos.add();
-                // se pone en true el uso
-                instrumento.setEnUso(true);
+                // Se añade el instrumento
+                instrumentos.add(i);
+                // Se pone en true el uso
+                i.setEnUso(true);
+                // Se resta la energía
+                this.energia -= 20;
                 return true;
             }
-
-        } else {
-            return false;
         }
+        return false;
     }
 
     // metodo dejarInstrumento
@@ -164,11 +166,11 @@ public class Artista {
     }
 
     // Método obtenerInstrumentosMarcianos
-    public ArrayList<Instrumento> obtenerInstrumentosMarcianos() {
-        return instrumentos.stream()
-                .filter(inst -> inst.getRareza() == Instrumento.ENCONTRADO_EN_MARTE)
-                .collect(Collectors.toList());
-    }
+   public ArrayList<Instrumento> obtenerInstrumentosMarcianos() {
+    return instrumentos.stream()
+            .filter(inst -> inst.getRareza() == Instrumento.ENCONTRADO_EN_MARTE)
+            .collect(Collectors.toCollection(ArrayList::new));
+}
 
     // Método calcularPoderEscenico
     public int calcularPoderEscenico() {
