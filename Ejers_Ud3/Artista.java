@@ -1,3 +1,7 @@
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.stream.Collectors;
 public class Artista {
     private String nombreArtistico;
     private int generoMusical;

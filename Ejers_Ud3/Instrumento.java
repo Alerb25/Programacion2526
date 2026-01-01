@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.stream.Collectors;
 public class Instrumento {
     // Atributos según el enunciado
     private String nombre;
