@@ -30,18 +30,24 @@ public class Instrumento {
         this.nivelDistorision = nivelDistorision;
         this.rareza = rareza;
         this.enUso = enUso;
-
     }
 
-    // constructor con valores aleatorios (volumen entre 20-150, distorsion entre
-    // 0.0-10.0, uso = false)
+    // constructor con valores aleatorios (volumen entre 20-150, distorsion entre 0.0-10.0, uso = false)
     public Instrumento() {
-        this.nombre = (int) (Math.random() * 5) + 1;
-        this.tipo = tipo;
-        this.volumen = (int) (Math.random() * (20 - 150 + 1)) + 20;
-        this.nivelDistorision = (double) (Math.random() * 10.0) + 1.0;
+        this.nombre = generarNombreAleatorio(); // CORREGIDO
+        this.tipo = (int) (Math.random() * 5) + 1; // CORREGIDO
+        this.volumen = (int) (Math.random() * (150 - 20 + 1)) + 20; // CORREGIDO
+        this.nivelDistorision = (double) (Math.random() * 10.0); // CORREGIDO (0.0 a 10.0)
         this.rareza = (int) (Math.random() * 4) + 1;
         this.enUso = false;
+    }
+    
+    // Método auxiliar para generar nombre aleatorio
+    private String generarNombreAleatorio() {
+        String[] nombres = {"Instrumento Galáctico", "Arma Sónica", "Dispositivo Musical", 
+                           "Aparato Cósmico", "Objeto Sonoro"};
+        int indice = (int) (Math.random() * nombres.length);
+        return nombres[indice];
     }
 
     // getters y setters
@@ -93,15 +99,61 @@ public class Instrumento {
         this.enUso = enUso;
     }
 
+    // Método toString
+    @Override
+    public String toString() {
+        return "Instrumento{" +
+                "nombre='" + nombre + '\'' +
+                ", tipo=" + tipoToString() +
+                ", volumen=" + volumen +
+                ", nivelDistorision=" + nivelDistorision +
+                ", rareza=" + rarezaToString() +
+                ", enUso=" + enUso +
+                '}';
+    }
+    
+    // Método para convertir tipo a String
+    public String tipoToString() {
+        switch (this.tipo) {
+            case GUITARRA_LASER:
+                return "Guitarra Laser";
+            case BATERIA_CUANTICA:
+                return "Bateria Cuantica";
+            case SINTETIZADOR_ESPACIAL:
+                return "Sintetizador Espacial";
+            case KAZOO_LEGENDARIO:
+                return "Kazoo Legendario";
+            case THEREMIN_ATOMICO:
+                return "Theremin Atomico";
+            default:
+                return "Tipo desconocido";
+        }
+    }
+    
+    // Método para convertir rareza a String (opcional pero útil)
+    public String rarezaToString() {
+        switch (this.rareza) {
+            case PRESTADO:
+                return "Prestado";
+            case COMPRADO:
+                return "Comprado";
+            case ROBADO:
+                return "Robado";
+            case ENCONTRADO_EN_MARTE:
+                return "Encontrado en Marte";
+            default:
+                return "Rareza desconocida";
+        }
+    }
+
     // metodo hackear
     public boolean hackear() {
         if (rareza == 4) {
             return false;
         } else {
-
             if (volumen < 150) {
-                volumen = volumen * 0.25 + volumen;
-                if (volumen >= 150) {
+                volumen = (int) (volumen * 1.25); // CORREGIDO: es multiplicar por 1.25, no sumar 0.25
+                if (volumen > 150) {
                     volumen = 150;
                 }
             }
@@ -112,22 +164,22 @@ public class Instrumento {
 
     // compatibilidad
     public boolean compatibilidad(Artista artista) {
-        int generoMusical = artista.getGenero();
+        int generoMusical = artista.getGeneroMusical(); // CORREGIDO: debe ser getGeneroMusical()
 
         switch (generoMusical) {
-            case DEATH_METAL_COSMICO:
+            case Artista.DEATH_METAL_COSMICO: // AÑADIDO: Artista. para las constantes
                 return (this.tipo == GUITARRA_LASER || this.tipo == BATERIA_CUANTICA);
 
-            case REGGAETON_MARCIANO:
+            case Artista.REGGAETON_MARCIANO:
                 return (this.tipo == SINTETIZADOR_ESPACIAL || this.tipo == BATERIA_CUANTICA);
 
-            case JAZZ_CUANTICO:
+            case Artista.JAZZ_CUANTICO:
                 return (this.tipo == THEREMIN_ATOMICO || this.tipo == SINTETIZADOR_ESPACIAL);
 
-            case POLKA_INTERGALACTICA:
+            case Artista.POLKA_INTERGALACTICA:
                 return (this.tipo == KAZOO_LEGENDARIO || this.tipo == THEREMIN_ATOMICO);
 
-            case TRAP_ESPACIAL:
+            case Artista.TRAP_ESPACIAL:
                 return (this.tipo == SINTETIZADOR_ESPACIAL || this.tipo == BATERIA_CUANTICA);
 
             default:
