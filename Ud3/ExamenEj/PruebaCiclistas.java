@@ -5,6 +5,10 @@ public class PruebaCiclistas {
 
        System.out.println(equipo);
 
+       //--------PT2---------
+
+       System.out.println("El equipo de ciclistas tiene " + equipo.numCiclsta() + " ciclistas");
+
 
     }
 }

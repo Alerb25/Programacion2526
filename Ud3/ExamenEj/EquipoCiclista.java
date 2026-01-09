@@ -82,7 +82,42 @@ public class EquipoCiclista {
         return"Equipo Ciclista \n"+"ID: " + this.id +"\n"
         + "nombre: " + this.nombre +"\n"
         + "numero Ciclistas: " + this.numCiclistas +"\n"
-        + "lista de Ciclistas: " + this.listaCiclistas.toString() +"\n";
+        + "lista de Ciclistas: " + this.listaCiclistas.toString() +"\n" ;
     }
+
+    //----------------PT2-----------------
+
+    //metodo numCiclista (devuelve el num de ciclistas)
+    public int numCiclsta(){
+        return this.listaCiclistas.size();
+    }
+
+    //metodo maxPeso (devuelve el peso max de los ciclistas)
+    public double maxPeso(){
+        double max = 0;
+         for(Ciclista ciclista : this.listaCiclistas){
+            if (ciclista.getPeso() > max){
+                max = ciclista.getPeso();
+            }
+         }
+    
+         return max;
+         //con Stream (filtramos solo al peso (::) y lo compara )
+         /*
+            Ciclista ciclistaPesado = this.listaCiclista.stream().max(Comparator.comaringDouble(Ciclista::getPeso)).orElse(null);
+            return ciclistaPesado.getPeso();
+         */
+
+         //Otra forma mas (convertimos a stream filtramos  el peso y calculamos el max)
+         /*
+            return listaCiclistas.stream().mapToDouble(Ciclista::getPeso).max().orElse(0.0);
+         */
+    }
+
+    //metodo int numCiclistas(String especialidad) (devuelde el num Ciclista de la especialidad indicada)
+
+
+
+
 
 }
