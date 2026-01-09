@@ -46,3 +46,16 @@ for (String nombre : nombres) {
 }
 
 El : separa la variable que almacenara cada elemento sobre el que se va a iterar
+
+----
+STREAM
+  opciones:
+    - filter(predicate) -> selecciona elementos que cumplen una condicion
+    - map(function) -> transforma cada elemnto a otro tipo de valor
+    - faltMap(fucntion) -> Combina streams resultantes de una transformacion en un unico streams
+    - distinct() ->Elimina elementos duplicados
+    - sorted() -> Ordena
+    - peek(action) -> Ejecuta una accion en cada elemento sin modificar el streams
+    - count()
+    - collect(collector)
+    - sum(), average(), min(), max()
