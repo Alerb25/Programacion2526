@@ -7,10 +7,6 @@ public class EquipoCiclista {
     private int numCiclistas;
     private ArrayList<Ciclista> listaCiclistas;
 
-    //atributos estaticos
-    public final int ESP_TODOTERRENO =0; 
-    public final int ESP_MONTANA =1; 
-    public final int ESP_CONTRARELOJ=2; 
 
     //constructor vacio que genera los datos aleatoriamenteq
     public EquipoCiclista(){
@@ -105,7 +101,7 @@ public class EquipoCiclista {
          //con Stream (filtramos solo al peso (::) y lo compara )
          /*
             Ciclista ciclistaPesado = this.listaCiclista.stream().max(Comparator.comaringDouble(Ciclista::getPeso)).orElse(null);
-            return ciclistaPesado.getPeso();
+            return ciclistaPesado.getPeso(); 
          */
 
          //Otra forma mas (convertimos a stream filtramos  el peso y calculamos el max)
@@ -115,6 +111,25 @@ public class EquipoCiclista {
     }
 
     //metodo int numCiclistas(String especialidad) (devuelde el num Ciclista de la especialidad indicada)
+    public int numCiclistas(int especialidad){
+        int cantidadEspecialidad = 0;
+        for (int i = 0; i<listaCiclistas.size(); i++){
+            if(listaCiclistas.get(i).getEspecialidad() == especialidad){
+                cantidadEspecialidad++;
+            }
+        }
+
+        return cantidadEspecialidad ;
+
+        //con Stream 
+        /*
+            return (int)listaCiclistas.stream().filter(c->c.getEspecialidad() == especialidad).count)();
+        */
+    }
+
+    //metodo Ciclista buscarCiclista(String nombre) Buscará en el array de ciclistas un ciclista con el nombre que recibe cómo parámetro. Devolverá el ciclista o -1 si no lo encuentra.
+
+
 
 
 
