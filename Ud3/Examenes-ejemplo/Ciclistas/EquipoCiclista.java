@@ -128,7 +128,11 @@ public class EquipoCiclista {
     }
 
     //metodo Ciclista buscarCiclista(String nombre) Buscará en el array de ciclistas un ciclista con el nombre que recibe cómo parámetro. Devolverá el ciclista o -1 si no lo encuentra.
-
+    public Ciclista buscarCiclista(String nombre){
+        Ciclista ciclistaEncontrado = this.listaCiclistas.stream().filter(ciclista.getnombre().equals(nombre));
+        return ciclistaEncontrado;
+        
+    }
 
 
 
