@@ -12,7 +12,7 @@ public class EjemploConexiones {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(
                 "jbdc:mysql://localhost:3306/peliculas_marcadiz", "root", "toor");
-            connection.close();
+            
                 //Crear Consulta
             String query = "Select * from pelicula";
                 //Crear la Sentencia
@@ -20,6 +20,7 @@ public class EjemploConexiones {
                 //Ejecutarla y guardarla
             ResultSet rs = stmt.executeQuery(query);
 
+            connection.close();
         }catch(ClassNotFoundException ce){
             System.out.println("Error bd");
             ce.printStackTrace();
