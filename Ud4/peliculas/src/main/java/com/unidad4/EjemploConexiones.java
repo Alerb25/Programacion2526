@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 
 public class EjemploConexiones {
     public static void main(String[] args) {
-        Connection connection = null;
+        Connection connection = null; //REVISAR PQ FALLA LA CONEXION
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(
