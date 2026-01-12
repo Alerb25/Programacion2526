@@ -2,6 +2,8 @@ package com.unidad4;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class EjemploConexiones {
     public static void main(String[] args) {
@@ -11,6 +13,13 @@ public class EjemploConexiones {
             connection = DriverManager.getConnection(
                 "jbdc:mysql://localhost:3306/peliculas_marcadiz", "root", "toor");
             connection.close();
+                //Crear Consulta
+            String query = "Select * from pelicula";
+                //Crear la Sentencia
+            Statement stmt = connection.createStatement();
+                //Ejecutarla y guardarla
+            ResultSet rs = stmt.executeQuery(query);
+
         }catch(ClassNotFoundException ce){
             System.out.println("Error bd");
             ce.printStackTrace();
