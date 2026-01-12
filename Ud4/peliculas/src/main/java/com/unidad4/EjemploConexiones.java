@@ -9,7 +9,8 @@ public class EjemploConexiones {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(
-                "jbdc:mysql://localhost:3306/mydb", "mydbuser", "mydbuser");
+                "jbdc:mysql://localhost:3306/peliculas_marcadiz", "root", "toor");
+            connection.close();
         }catch(ClassNotFoundException ce){
             System.out.println("Error bd");
             ce.printStackTrace();
