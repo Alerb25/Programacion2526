@@ -11,7 +11,7 @@ public class EjemploConexiones {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(
-                "jbdc:mysql://localhost:3306/peliculas_marcadiz", "root", "toor");
+                "jdbc:mysql://localhost:3306/mydb", "root", "toor");
             
                 //Crear Consulta
             String query = "Select * from pelicula";
