@@ -9,9 +9,9 @@ public class Ciclista {
     private int especialidad;
 
     //atributos estaticos
-    public final int ESP_TODOTERRENO =0; 
-    public final int ESP_MONTANA =1; 
-    public final int ESP_CONTRARELOJ=2; 
+    public final static int ESP_TODOTERRENO =0; 
+    public final  static int ESP_MONTANA =1; 
+    public final static int ESP_CONTRARELOJ=2; 
 
     //constructor vacio que genera los datos aleatoriamenteq
     public Ciclista(){
