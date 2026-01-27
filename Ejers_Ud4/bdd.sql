@@ -55,7 +55,7 @@ CREATE TABLE duendeCombate (
     nivelSarcasmo INT NOT NULL, 
     horasSombra TIME NOT NULL, 
     tiempoBrilloCegador TIME,
-    PRIMARY KEY (idea_Duende)
+    PRIMARY KEY (id_Duende)
     );
 
 -- ENTIDADES SECUNDARIAS
