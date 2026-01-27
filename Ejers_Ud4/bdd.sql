@@ -76,7 +76,7 @@ CREATE TABLE varitaMagica(
     dannio INT NOT NULL,
     tiempoRecarga TIME, 
     tipoPurpurina VARCHAR(100),
-    PRIMARY KEY (id_Pico)
+    PRIMARY KEY (id_Varita)
 );
 
 -- CaracolGigante
