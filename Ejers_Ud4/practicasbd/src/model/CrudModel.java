@@ -46,6 +46,10 @@ public class CrudModel {
         }
     }
 
+
+    //METODOS IMPLEMENTADOS
+
+    //FIND BY ID
      public Map<String, Object> FindById(Object id) {
         ResultSet rs = null;
         Map registro = null;
@@ -73,5 +77,32 @@ public class CrudModel {
         }
 
         return registro;
+    }
+
+    //FIND ALL
+    public  List<Map<String,object>> FindAll() {
+        ResultSet rs = null;
+        Map listado = null;
+        try {
+            // Creamos la consulta sql
+            String query = "select * from " + table;
+
+            // Creamos la sentencia
+            PreparedStatement stmt = this.con.prepareStatement(query);
+
+            // Ejecutamos y guardamos los datos en un resultset
+            rs = stmt.executeQuery();
+
+            listado = new HashMap<String, Object>();
+            for (String column : columns) {
+                registro.put(column, rs.getObject(column));
+            }
+            
+        } catch (Exception e) {
+            System.out.println("Hubo un problema con la BD");
+            e.printStackTrace();
+        }
+
+        return rs;
     }
 }
