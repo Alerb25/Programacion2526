@@ -126,7 +126,7 @@ alter table caracolGigante add constraint fk_topoCaracol foreign key(fk_topo) re
 
 --  1:n duende y caracoles
 alter table caracolGigante add column fk_Duende int;
-alter table caracolGigante add constraint fk_duendeCaracol foreign key(fk_Duende) references DuendeCombate(id_Duende);
+alter table duendeCombate add constraint fk_duendeCaracol foreign key(fk_Caracol) references CaracolGigante(id_Caracol);
 
 
 -- INSERT
