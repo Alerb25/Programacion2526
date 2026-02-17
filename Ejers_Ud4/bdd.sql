@@ -1,7 +1,5 @@
 --  Base de Datos
 create database proyecto; 
-create user proyecto identified by 'proyecto';
-grant select, insert, update, delete on proyecto.* to 'proyecto'@'localhost';
 
 use proyecto;
 
@@ -125,7 +123,7 @@ alter table caracolGigante add column fk_topo int;
 alter table caracolGigante add constraint fk_topoCaracol foreign key(fk_topo) references topoCombate(id_Topo);
 
 --  1:n duende y caracoles
-alter table caracolGigante add column fk_Duende int;
+alter table duendeCombate add column fk_Caracol int;
 alter table duendeCombate add constraint fk_duendeCaracol foreign key(fk_Caracol) references CaracolGigante(id_Caracol);
 
 
@@ -172,7 +170,7 @@ VALUES
 
 -- DUENDES 
 INSERT INTO duendeCombate
-(nombre, apodoGuerra, modelo, agilidad, nivelSarcasmo, horasSombra, tiempoBrilloCegador, fk_Hada)
+(nombre, apodoGuerra, modelo, agilidad, nivelSarcasmo, horasSombra, tiempoBrilloCegador, fk_Hada, fk_Caracol)
 VALUES
 ('Duende_1','SarcasmoPuro','Z1',80,9,'06:00:00','00:00:30',1),
 ('Duende_2','LenguaFilosa','Z1',78,8,'06:00:00','00:00:30',2),
@@ -186,7 +184,7 @@ VALUES
 
 -- CARACOLES
 INSERT INTO caracolGigante
-(nunSerie, raza, velocidadMax, armamento, municionBaba, estado, fk_topo, fk_Duende)
+(nunSerie, raza, velocidadMax, armamento, municionBaba, estado, fk_topo)
 VALUES
 (2001,'Gigantus',2.5,'BabaAcida',50,1,1,1),
 (2002,'Gigantus',2.6,'BabaExplosiva',55,1,2,2),
