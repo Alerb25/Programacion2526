@@ -48,6 +48,7 @@ public class CrudModel {
 
 
     //METODOS IMPLEMENTADOS
+    //Insertar Registro, devuelve ID
 
     //FIND BY ID
      public Map<String, Object> FindById(Object id) {
@@ -97,7 +98,7 @@ public class CrudModel {
             for (String column : columns) {
                 registro.put(column, rs.getObject(column));
             }
-            
+
         } catch (Exception e) {
             System.out.println("Hubo un problema con la BD");
             e.printStackTrace();
@@ -105,4 +106,19 @@ public class CrudModel {
 
         return rs;
     }
+
+    //Actualizar Registros
+
+
+    //Eliminar por ID
+
+
+    //Paginación
+
+
+    //Contar Registros
+
+
+    //METODOS ABSTRACTOS
+    //Filtrado simple  
 }
