@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.List;
 import java.util.Map;
 
-public class CrudModel {
+public abstract class CrudModel {
 
     private Connection con;
     private String table;
@@ -22,13 +22,22 @@ public class CrudModel {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            String url = "jdbc:mysql://localhost:3306/tu_base";
-            String user = "root";
-            String password = "1234";
+            // Al crear el dotenv cargamos todas las variables
+            Dotenv dotenv = Dotenv.load();
+
+            // Asigno las variables desde el fichero .env
+            String host = dotenv.get("DB_HOST");
+            String port = dotenv.get("DB_PORT");
+            String dbName = dotenv.get("DB_NAME");
+            String user = dotenv.get("DB_USER");
+            String password = dotenv.get("DB_PASSWORD");
+
+            // Creamos la url de conexion con el formato para mysql
+            String url = "jdbc:mysql://" + host + ":" + port + "/" + dbName;
 
             con = DriverManager.getConnection(url, user, password);
 
-            String query = "SELECT * FROM proyecto";
+            String query = "SELECT * FROM ";
 
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
@@ -55,6 +64,39 @@ public class CrudModel {
         Map registro = null;
         try {
 
+            StringBuilder sql = new StringBuilder("INSERT INTO " + table + " (");
+            StringBuilder values = new StringBuilder(" VALUES (");
+
+            boolean first = true;
+            for (String column : columns) {
+                if (data.containsKey(column)) {
+                    if (!first) {
+                        sql.append(", ");
+                        values.append(", ");
+                    }
+                    sql.append(column);
+                    values.append("?");
+                    first = false;
+                }
+            }
+
+            sql.append(")");
+            values.append(")");
+            sql.append(values);
+
+            PreparedStatement stmt = con.prepareStatement(sql.toString(), Statement.RETURN_GENERATED_KEYS);
+
+            int index = 1;
+            for (String column : columns) {
+                if (data.containsKey(column)) {
+                    stmt.setObject(index++, data.get(column));
+                }
+            }
+
+            stmt.executeUpdate();
+
+            rs = stmt.getGeneratedKeys();
+            return rs.next() ? rs.getInt(1) : -1;
 
         } catch (ClassNotFoundException e) {
             System.out.println("No tenemos el driver instalado");
@@ -63,7 +105,7 @@ public class CrudModel {
             System.out.println("Hubo un problema con la BD");
             e.printStackTrace();
         }
-        return rs;
+
     }
 
     // FIND BY ID
@@ -72,28 +114,29 @@ public class CrudModel {
         Map registro = null;
 
         try {
-            // Creamos la consulta sql
-            String query = "select * from " + table + " where id = ?";
 
-            // Creamos la sentencia
-            PreparedStatement stmt = this.con.prepareStatement(query);
-
+            String sql = "SELECT * FROM " + table + " WHERE " + primaryKey + " = ?";
+            PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setObject(1, id);
 
-            // Ejecutamos y guardamos los datos en un resultset
             rs = stmt.executeQuery();
+            if (!rs.next())
+                return null;
 
-            registro = new HashMap<String, Object>();
+            registro = new HashMap<>();
+            registro.put(primaryKey, rs.getObject(primaryKey));
+
             for (String column : columns) {
                 registro.put(column, rs.getObject(column));
             }
+
+            return registro;
 
         } catch (Exception e) {
             System.out.println("Hubo un problema con la BD");
             e.printStackTrace();
         }
 
-        return registro;
     }
 
     // FIND ALL
@@ -101,26 +144,27 @@ public class CrudModel {
         ResultSet rs = null;
         Map listado = null;
         try {
-            // Creamos la consulta sql
-            String query = "select * from " + table;
+            List<Map<String, Object>> lista = new ArrayList<>();
+            String sql = "SELECT * FROM " + table;
 
-            // Creamos la sentencia
-            PreparedStatement stmt = this.con.prepareStatement(query);
+            Statement stmt = con.createStatement();
+            rs = stmt.executeQuery(sql);
 
-            // Ejecutamos y guardamos los datos en un resultset
-            rs = stmt.executeQuery();
-
-            listado = new HashMap<String, Object>();
-            for (String column : columns) {
-                registro.put(column, rs.getObject(column));
+            while (rs.next()) {
+                Map<String, Object> registro = new HashMap<>();
+                registro.put(primaryKey, rs.getObject(primaryKey));
+                for (String column : columns) {
+                    registro.put(column, rs.getObject(column));
+                }
+                lista.add(registro);
             }
+            return lista;
 
         } catch (Exception e) {
             System.out.println("Hubo un problema con la BD");
             e.printStackTrace();
         }
 
-        return rs;
     }
 
     // Actualizar Registros
@@ -130,32 +174,31 @@ public class CrudModel {
 
             String query = "update proyecto set ";
             boolean primero = true;
-            for (Map.Entry<String, String> column : columns.entrySet()){
-                if (primero){
+            for (Map.Entry<String, String> column : columns.entrySet()) {
+                if (primero) {
                     primero = false;
-                }else {
+                } else {
                     query += ",";
                 }
                 query += column.getKey() + "=?";
 
                 PreparedStatement stmt = con.prepareStatement(query);
-                //Rellenamos los huecos
-                int posicion  = 1;
-            for (Map.Entry<String, String> columEntry : columns.entrySet()) {
-            // Según el campo, seteamos como String o como Int
-            if (column.getKey().equals("") || campo.getKey().equals("")) {
-                stmt.setString(posicion, column.getValue());
-            } else {
-                stmt.setInt(posicion, Integer.valueOf(colun.getValue()));
-            }
-            posicion++;
-        }
-        
-            stmt.setInt(posicion, id);
-            rs = stmt.executeUpdate();
+                // Rellenamos los huecos
+                int posicion = 1;
+                for (Map.Entry<String, String> columEntry : columns.entrySet()) {
+                    // Según el campo, seteamos como String o como Int
+                    if (column.getKey().equals("") || campo.getKey().equals("")) {
+                        stmt.setString(posicion, column.getValue());
+                    } else {
+                        stmt.setInt(posicion, Integer.valueOf(colun.getValue()));
+                    }
+                    posicion++;
+                }
+
+                stmt.setInt(posicion, id);
+                rs = stmt.executeUpdate();
 
             }
-          
 
         } catch (ClassNotFoundException e) {
             System.out.println("No tenemos el driver instalado");
@@ -172,11 +215,11 @@ public class CrudModel {
         ResultSet rs = null;
         try {
 
-            String query = "delete from proyecto  where id = ?";
-            PreparedStatement stmt = con.prepareStatement(query);
-            stmt.setInt(1, id);
+            String sql = "DELETE FROM " + table + " WHERE " + primaryKey + " = ?";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setObject(1, id);
 
-            rs = stmt.executeUpdate();
+            return stmt.executeUpdate() > 0;
 
         } catch (ClassNotFoundException e) {
             System.out.println("No tenemos el driver instalado");
@@ -185,23 +228,38 @@ public class CrudModel {
             System.out.println("Hubo un problema con la BD");
             e.printStackTrace();
         }
-        return rs;
+
     }
 
     // Paginación
     public List<Map<String, Object>> findAll(int page, int size) {
         ResultSet rs = null;
         try {
-            //Formula del offset
+            // Formula del offset
             int offset = (page - 1) * size;
-            String query = "select * from proyecto";
-            //Limit = cuantos mostramos ||  desde cual empezamos 
-            query += " LIMIT " + size + " OFFSET " + offset;
 
-            Statement stmt = this.con.createStatement();
-            rs = stmt.executeQuery(query);
+            // Limit = cuantos mostramos || desde cual empezamos
+            String sql = "SELECT * FROM " + table + " LIMIT ? OFFSET ?";
 
+            PreparedStatement stmt = con.prepareStatement(sql);
+            // Rellenar los huecos
+            stmt.setInt(1, size);
+            stmt.setInt(2, offset);
 
+            rs = stmt.executeQuery();
+            List<Map<String, Object>> lista = new ArrayList<>();
+
+            // Creamos la lista de manera que siga las instrucciones del numero de pagina y
+            // el tamaño
+            while (rs.next()) {
+                Map<String, Object> registro = new HashMap<>();
+                registro.put(primaryKey, rs.getObject(primaryKey));
+                for (String column : columns) {
+                    registro.put(column, rs.getObject(column));
+                }
+                lista.add(registro);
+            }
+            return lista;
 
         } catch (ClassNotFoundException e) {
             System.out.println("No tenemos el driver instalado");
@@ -210,23 +268,50 @@ public class CrudModel {
             System.out.println("Hubo un problema con la BD");
             e.printStackTrace();
         }
-        return rs;
-    }
 
-    
+    }
 
     // Contar Registros
     public int count() {
-
+        String sql = "SELECT COUNT(*) FROM " + table;
+        Statement stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery(sql);
+        rs.next();
+        return rs.getInt(1);
     }
 
     // METODOS ABSTRACTOS
     // Filtrado simple
+    public abstract List<Map<String, Object>> filtrar(String campo, Object valor) throws SQLException;
 
-    // Buscar
+    // Buscar con comparador: > < >= <= != like
+    public abstract List<Map<String, Object>> buscar(
+            String campo,
+            String comparador,
+            String texto) throws SQLException;
 
     // METODO AUXILIAR protegido
-    private List<Map<String, Object>> buscar(String campo, String comparador, String texto) {
+    protected List<Map<String, Object>> executeQuery(String sql, Object... params) throws SQLException {
 
+        PreparedStatement stmt = con.prepareStatement(sql);
+
+        for (int i = 0; i < params.length; i++) {
+            stmt.setObject(i + 1, params[i]);
+        }
+
+        ResultSet rs = stmt.executeQuery();
+        List<Map<String, Object>> lista = new ArrayList<>();
+
+        while (rs.next()) {
+            Map<String, Object> registro = new HashMap<>();
+            registro.put(primaryKey, rs.getObject(primaryKey));
+
+            for (String column : columns) {
+                registro.put(column, rs.getObject(column));
+            }
+            lista.add(registro);
+        }
+
+        return lista;
     }
 }
