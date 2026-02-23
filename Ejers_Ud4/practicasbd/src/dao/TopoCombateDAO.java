@@ -1,26 +1,31 @@
-public class GnomoDAO extends CrudModel {
+import java.util.List;
 
-    public GnomoDAO() {
+public class TopoCombateDAO extends CrudModel {
+
+    public TopoCombateDAO() {
         super(
-            "gnomo",
-            "id_Gnomo",
+            "topoCombate",
+            "id_Topo",
             List.of(
                 "nombre",
                 "apodoGuerra",
                 "edad",
-                "alturaBarba",
-                "nivelCascarrabias",
-                "energiaRefunfunno"
+                "modelo",
+                "fuerzaExcavacion",
+                "agudezaOlfativa",
+                "horasSuenno",
+                "tiempoTierraEnOjos"
+                
             )
         );
+
     }
 
-      //cambiar la tabla porque sino vamos mal
-        String table = "gnomo";
-        
+    String table = "topoCombate";
     @Override
     public List<Map<String, Object>> filtrar(String campo, Object valor) throws SQLException {
-      
+        
+        
         String sql = "SELECT * FROM " + table + " WHERE " + campo + " = ?";
         return executeQuery(sql, valor);
     }
