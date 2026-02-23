@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class GnomoDAO extends CrudModel {
 
     public GnomoDAO() {
@@ -17,7 +19,7 @@ public class GnomoDAO extends CrudModel {
 
       //cambiar la tabla porque sino vamos mal
         String table = "gnomo";
-        
+
     @Override
     public List<Map<String, Object>> filtrar(String campo, Object valor) throws SQLException {
       
@@ -43,4 +45,25 @@ public class GnomoDAO extends CrudModel {
             return executeQuery(sql, texto);
         }
     }
+
+    //FUNCIONES ADICIONALES
+    //Devuelve una lista de topos liderados por el gnomo del id
+    public ArrayList<TopoCombateDO>cargarTopos(int id_Gnomo){
+
+    }
+
+    //Devuelve la suma de energia de refunfuño de todos los gnomos con nivel cascarrabias > 5
+    //HAY QUE UTILIZAR UN BUCLE PARA RECORRER Y SUMAR O USAR SQL
+    public int calcularEnergiaRefunfunnoTotal(){
+        int total = 0;
+
+        return total;
+    }
+
+    //Devuelve el gnomo con mayor nivel de cascarrabias (USAR BUCLE EN JAVA)
+    public GnomoDAO obtenerGnomoMasCascarrabias(){
+
+    }
+
+    //Genera un informe usando stringBuilder
 }
