@@ -2,9 +2,11 @@ package com.practicasbd;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.List;
+import java.util.Map;
 
 public class CrudModel {
 
@@ -46,12 +48,26 @@ public class CrudModel {
         }
     }
 
+    // METODOS IMPLEMENTADOS
+    // Insertar Registro, devuelve ID
+    public int insert(Map<String, Object> data) {
+        ResultSet rs = null;
+        Map registro = null;
+        try {
 
-    //METODOS IMPLEMENTADOS
-    //Insertar Registro, devuelve ID
 
-    //FIND BY ID
-     public Map<String, Object> FindById(Object id) {
+        } catch (ClassNotFoundException e) {
+            System.out.println("No tenemos el driver instalado");
+            e.printStackTrace();
+        } catch (Exception e) {
+            System.out.println("Hubo un problema con la BD");
+            e.printStackTrace();
+        }
+        return rs;
+    }
+
+    // FIND BY ID
+    public Map<String, Object> FindById(Object id) {
         ResultSet rs = null;
         Map registro = null;
 
@@ -80,8 +96,8 @@ public class CrudModel {
         return registro;
     }
 
-    //FIND ALL
-    public  List<Map<String,object>> FindAll() {
+    // FIND ALL
+    public List<Map<String, object>> FindAll() {
         ResultSet rs = null;
         Map listado = null;
         try {
@@ -107,18 +123,109 @@ public class CrudModel {
         return rs;
     }
 
-    //Actualizar Registros
+    // Actualizar Registros
+    public boolean update(Object id, Map<String, Object> data) {
+        ResultSet rs = null;
+        try {
+
+            String query = "update proyecto set ";
+            boolean primero = true;
+            for (Map.Entry<String, String> column : columns.entrySet()){
+                if (primero){
+                    primero = false;
+                }else {
+                    query += ",";
+                }
+                query += column.getKey() + "=?";
+
+                PreparedStatement stmt = con.prepareStatement(query);
+                //Rellenamos los huecos
+                int posicion  = 1;
+            for (Map.Entry<String, String> columEntry : columns.entrySet()) {
+            // Según el campo, seteamos como String o como Int
+            if (column.getKey().equals("") || campo.getKey().equals("")) {
+                stmt.setString(posicion, column.getValue());
+            } else {
+                stmt.setInt(posicion, Integer.valueOf(colun.getValue()));
+            }
+            posicion++;
+        }
+        
+            stmt.setInt(posicion, posicion);
+
+            }
+          
+
+        } catch (ClassNotFoundException e) {
+            System.out.println("No tenemos el driver instalado");
+            e.printStackTrace();
+        } catch (Exception e) {
+            System.out.println("Hubo un problema con la BD");
+            e.printStackTrace();
+        }
+        return rs;
+    }
+
+    // Eliminar por ID
+    public boolean delete(Object id) {
+        ResultSet rs = null;
+        try {
+
+            String query = "delete from proyecto  where id = ?";
+            PreparedStatement stmt = con.prepareStatement(query);
+            stmt.setInt(1, id);
+
+            rs = stmt.executeUpdate();
+
+        } catch (ClassNotFoundException e) {
+            System.out.println("No tenemos el driver instalado");
+            e.printStackTrace();
+        } catch (Exception e) {
+            System.out.println("Hubo un problema con la BD");
+            e.printStackTrace();
+        }
+        return rs;
+    }
+
+    // Paginación
+    public List<Map<String, Object>> findAll(int page, int size) {
+        ResultSet rs = null;
+        try {
+            //Formula del offset
+            int offset = (page - 1) * size;
+            String query = "select * from proyecto";
+            //Limit = cuantos mostramos ||  desde cual empezamos 
+            query += " LIMIT " + size + " OFFSET " + offset;
+
+            Statement stmt = this.con.createStatement();
+            rs = stmt.executeQuery(query);
 
 
-    //Eliminar por ID
 
+        } catch (ClassNotFoundException e) {
+            System.out.println("No tenemos el driver instalado");
+            e.printStackTrace();
+        } catch (Exception e) {
+            System.out.println("Hubo un problema con la BD");
+            e.printStackTrace();
+        }
+        return rs;
+    }
 
-    //Paginación
+    
 
+    // Contar Registros
+    public int count() {
 
-    //Contar Registros
+    }
 
+    // METODOS ABSTRACTOS
+    // Filtrado simple
 
-    //METODOS ABSTRACTOS
-    //Filtrado simple  
+    // Buscar
+
+    // METODO AUXILIAR protegido
+    private List<Map<String, Object>> buscar(String campo, String comparador, String texto) {
+
+    }
 }
