@@ -151,7 +151,8 @@ public class CrudModel {
             posicion++;
         }
         
-            stmt.setInt(posicion, posicion);
+            stmt.setInt(posicion, id);
+            rs = stmt.executeUpdate();
 
             }
           
