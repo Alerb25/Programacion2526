@@ -69,24 +69,15 @@ public class GnomoDAO extends CrudModel {
     // Devuelve la suma de energia de refunfuño de todos los gnomos con nivel
     // cascarrabias > 5
     // HAY QUE UTILIZAR UN BUCLE PARA RECORRER Y SUMAR O USAR SQL
-    public int calcularEnergiaRefunfunnoTotal() {
-        int total = 0;
-        int sumaTotal = 0;
-        String sql = "SELECT COUNT(*) FROM gnomo WHERE nivelCascarrabias > ?";
+    public int calcularEnergiaRefunfunnoTotal() { // TO DO:  VIDEO
+        String sql = "SELECT SUM(energiaRefunfunno) FROM gnomo WHERE nivelCascarrabias > ?";
 
         PreparedStatement ps = conexion.prepareStatement(sql);
         ps.setInt(1, 5);
 
         ResultSet rs = ps.executeQuery(); // se ejecuta sql
 
-        if (rs.next()) {
-            total = rs.getInt(1); // primera columna (el COUNT)
-
-            sumaTotal += total;
-        }
-
-        return sumaTotal;
-
+       return rs;
     }
 
     // Devuelve el gnomo con mayor nivel de cascarrabias (USAR BUCLE EN JAVA)

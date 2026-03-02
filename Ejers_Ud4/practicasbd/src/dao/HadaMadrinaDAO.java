@@ -48,7 +48,7 @@ public class HadaMadrinaDAO extends CrudModel {
 
     // FUNCIONES ADICIONALES
     // cargar duendes
-    public ArrayList<DuendeCombateDO> cargarDuendes(int idHada)
+    public ArrayList<DuendeCombateDO> cargarDuendes(int idHada) // TO DO:  VIDEO
             throws SQLException {
 
         String sql = "SELECT * FROM duendeCombate WHERE idHada = ?";
