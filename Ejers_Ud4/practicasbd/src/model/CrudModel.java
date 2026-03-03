@@ -170,48 +170,53 @@ public abstract class CrudModel {
 
     }
 
-    // Actualizar Registros
-    public boolean update(Object id, Map<String, Object> data) {
-        ResultSet rs = null;
-        try {
+   // Actualizar Registros
+public boolean update(Object id, Map<String, Object> data) {
+    try {
+        // Construimos el SQL dinámicamente
+        String query = "UPDATE proyecto SET ";
+        boolean primero = true;
 
-            String query = "update proyecto set ";
-            boolean primero = true;
-            for (Map.Entry<String, String> column : columns.entrySet()) {
-                if (primero) {
-                    primero = false;
-                } else {
-                    query += ",";
-                }
-                query += column.getKey() + "=?";
-
-                PreparedStatement stmt = con.prepareStatement(query);
-                // Rellenamos los huecos
-                int posicion = 1;
-                for (Map.Entry<String, String> columEntry : columns.entrySet()) {
-                    // Según el campo, seteamos como String o como Int
-                    if (column.getKey().equals("") || campo.getKey().equals("")) {
-                        stmt.setString(posicion, column.getValue());
-                    } else {
-                        stmt.setInt(posicion, Integer.valueOf(colun.getValue()));
-                    }
-                    posicion++;
-                }
-
-                stmt.setInt(posicion, id);
-                rs = stmt.executeUpdate();
-
+        for (Map.Entry<String, Object> column : data.entrySet()) {
+            if (primero) {
+                primero = false;
+            } else {
+                query += ", ";
             }
-
-        } catch (ClassNotFoundException e) {
-            System.out.println("No tenemos el driver instalado");
-            e.printStackTrace();
-        } catch (Exception e) {
-            System.out.println("Hubo un problema con la BD");
-            e.printStackTrace();
+            query += column.getKey() + " = ?";
         }
-        return rs;
+
+        //  Añadimos el WHERE 
+        query += " WHERE id = ?";
+
+        //  PreparedStatement se crea FUERA del bucle, con la query ya completa
+        PreparedStatement stmt = con.prepareStatement(query);
+
+        //  Rellenamos los huecos
+        int posicion = 1;
+        for (Map.Entry<String, Object> column : data.entrySet()) {
+            // Según el tipo del valor, seteamos como String o como Int
+            if (column.getValue() instanceof String) {
+                stmt.setString(posicion, (String) column.getValue());
+            } else if (column.getValue() instanceof Integer) {
+                stmt.setInt(posicion, (Integer) column.getValue());
+            }
+            posicion++;
+        }
+
+        //  Seteamos el ID al final
+        stmt.setObject(posicion, id);
+
+        //  executeUpdate() devuelve int (filas afectadas)
+        int filasAfectadas = stmt.executeUpdate();
+        return filasAfectadas > 0;
+
+    } catch (SQLException e) {
+        System.out.println("Hubo un problema con la BD");
+        e.printStackTrace();
+        return false;
     }
+}
 
     // Eliminar por ID
     public boolean delete(Object id) {
