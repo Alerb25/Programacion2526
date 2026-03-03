@@ -4,7 +4,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -96,7 +99,7 @@ public abstract class CrudModel {
             stmt.executeUpdate();
 
             rs = stmt.getGeneratedKeys();
-            return rs.next() ? rs.getInt(1) : -1;
+            
 
         } catch (ClassNotFoundException e) {
             System.out.println("No tenemos el driver instalado");
@@ -105,7 +108,7 @@ public abstract class CrudModel {
             System.out.println("Hubo un problema con la BD");
             e.printStackTrace();
         }
-
+        return rs.next() ? rs.getInt(1) : -1;
     }
 
     // FIND BY ID
