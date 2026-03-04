@@ -1,4 +1,3 @@
-// /model/DuendeCombateDO.java
 public class DuendeCombateDO {
 
     private int idDuende;

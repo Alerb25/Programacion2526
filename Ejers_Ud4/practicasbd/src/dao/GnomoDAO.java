@@ -34,13 +34,21 @@ public class GnomoDAO extends CrudModel {
             throw new IllegalArgumentException("Comparador no permitido");
         }
 
+        String sql;
+        List<Map<String, Object>> rows;
+
         if (comparador.equalsIgnoreCase("like")) {
-            String sql = "SELECT * FROM " + table + " WHERE " + campo + " LIKE ?";
-            return executeQuery(sql, "%" + texto + "%");
+            sql = "SELECT * FROM " + table + " WHERE " + campo + " LIKE ?";
+            rows = executeQuery(sql, "%" + texto + "%");
         } else {
-            String sql = "SELECT * FROM " + table + " WHERE " + campo + " "
+            sql = "SELECT * FROM " + table + " WHERE " + campo + " "
                     + comparador + " ?";
-            return executeQuery(sql, texto);
+            rows = executeQuery(sql, texto);
+        }
+
+        List<GnomoDO>resultado = new ArrayList<>();
+        for (Map<String, Object> row : rows ){
+            resultado.add(mapGnomo(row));
         }
     }
 
@@ -130,6 +138,19 @@ public class GnomoDAO extends CrudModel {
                 .append(gnomos.size());
 
         return informe.toString();
+    }
+
+        //  — método privado que convierte Map → DO
+    private GnomoDO mapGnomo(Map<String, Object> row) {
+        GnomoDO g = new GnomoDO();
+        d.setIdGnomo((Integer) row.get("id_Gnomo"));
+        d.setNombre((String) row.get("nombre"));
+        d.setApodoGuerra((String) row.get("apodoGuerra"));
+        d.setEdad((int) row.get("edad"));
+        d.setAlturaBarba((Integer) row.get("alturaBarba"));
+        d.setNivelCascarrabias((Integer) row.get("nivelCascarrabias"));
+        d.setEnergiaRefunfunno((int) row.get("energiaRefunfunno"));
+        return g;
     }
 
 }
