@@ -20,7 +20,7 @@ public class TopoCombateDAO extends CrudModel {
 
     }
 
-    String table = "topoCombate";
+   
 
     @Override
     public List<Map<String, Object>> filtrar(String campo, Object valor) throws SQLException {

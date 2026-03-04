@@ -17,9 +17,7 @@ public class GnomoDAO extends CrudModel {
                         "energiaRefunfunno"));
     }
 
-    // cambiar la tabla porque sino vamos mal
-    String table = "gnomo";
-
+   
     @Override
     public List<Map<String, Object>> filtrar(String campo, Object valor) throws SQLException {
 

@@ -14,7 +14,10 @@ public abstract class CrudModel {
     private String table;
     private List<String> columns;
 
-    public CrudModel() {
+    public CrudModel(String table, String primaryKey, List<String> columns) {
+        this.table = table;
+        this.primaryKey = primaryKey;
+        this.columns = columns;
         conectar();
     }
 
@@ -39,21 +42,13 @@ public abstract class CrudModel {
 
             String query = "SELECT * FROM ";
 
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
-
-            while (rs.next()) {
-                System.out.println(rs.getString(1));
-            }
-
-            con.close();
-
         } catch (ClassNotFoundException e) {
             System.out.println("No tenemos el driver instalado");
             e.printStackTrace();
         } catch (Exception e) {
             System.out.println("Hubo un problema con la BD");
             e.printStackTrace();
+            
         }
     }
 
@@ -101,9 +96,11 @@ public abstract class CrudModel {
         } catch (ClassNotFoundException e) {
             System.out.println("No tenemos el driver instalado");
             e.printStackTrace();
+            return null;
         } catch (Exception e) {
             System.out.println("Hubo un problema con la BD");
             e.printStackTrace();
+            return null;
         }
 
     }
@@ -135,12 +132,13 @@ public abstract class CrudModel {
         } catch (Exception e) {
             System.out.println("Hubo un problema con la BD");
             e.printStackTrace();
+            return null;
         }
 
     }
 
     // FIND ALL
-    public List<Map<String, object>> FindAll() {
+    public List<Map<String, Object>> FindAll() {
         ResultSet rs = null;
         Map listado = null;
         try {
@@ -163,57 +161,58 @@ public abstract class CrudModel {
         } catch (Exception e) {
             System.out.println("Hubo un problema con la BD");
             e.printStackTrace();
+            return null;
         }
 
     }
 
-   // Actualizar Registros
-public boolean update(Object id, Map<String, Object> data) {
-    try {
-        // Construimos el SQL dinámicamente
-        String query = "UPDATE proyecto SET ";
-        boolean primero = true;
+    // Actualizar Registros
+    public boolean update(Object id, Map<String, Object> data) {
+        try {
+            // Construimos el SQL dinámicamente
+            String query = "UPDATE "+ table +" SET ";
+            boolean primero = true;
 
-        for (Map.Entry<String, Object> column : data.entrySet()) {
-            if (primero) {
-                primero = false;
-            } else {
-                query += ", ";
+            for (Map.Entry<String, Object> column : data.entrySet()) {
+                if (primero) {
+                    primero = false;
+                } else {
+                    query += ", ";
+                }
+                query += column.getKey() + " = ?";
             }
-            query += column.getKey() + " = ?";
-        }
 
-        //  Añadimos el WHERE 
-        query += " WHERE id = ?";
+            // Añadimos el WHERE
+            query += " WHERE " + primaryKey +" = ?";
 
-        //  PreparedStatement se crea FUERA del bucle, con la query ya completa
-        PreparedStatement stmt = con.prepareStatement(query);
+            // PreparedStatement se crea FUERA del bucle, con la query ya completa
+            PreparedStatement stmt = con.prepareStatement(query);
 
-        //  Rellenamos los huecos
-        int posicion = 1;
-        for (Map.Entry<String, Object> column : data.entrySet()) {
-            // Según el tipo del valor, seteamos como String o como Int
-            if (column.getValue() instanceof String) {
-                stmt.setString(posicion, (String) column.getValue());
-            } else if (column.getValue() instanceof Integer) {
-                stmt.setInt(posicion, (Integer) column.getValue());
+            // Rellenamos los huecos
+            int posicion = 1;
+            for (Map.Entry<String, Object> column : data.entrySet()) {
+                // Según el tipo del valor, seteamos como String o como Int
+                if (column.getValue() instanceof String) {
+                    stmt.setString(posicion, (String) column.getValue());
+                } else if (column.getValue() instanceof Integer) {
+                    stmt.setInt(posicion, (Integer) column.getValue());
+                }
+                posicion++;
             }
-            posicion++;
+
+            // Seteamos el ID al final
+            stmt.setObject(posicion, id);
+
+            // executeUpdate() devuelve int (filas afectadas)
+            int filasAfectadas = stmt.executeUpdate();
+            return filasAfectadas > 0;
+
+        } catch (SQLException e) {
+            System.out.println("Hubo un problema con la BD");
+            e.printStackTrace();
+            return false;
         }
-
-        //  Seteamos el ID al final
-        stmt.setObject(posicion, id);
-
-        //  executeUpdate() devuelve int (filas afectadas)
-        int filasAfectadas = stmt.executeUpdate();
-        return filasAfectadas > 0;
-
-    } catch (SQLException e) {
-        System.out.println("Hubo un problema con la BD");
-        e.printStackTrace();
-        return false;
     }
-}
 
     // Eliminar por ID
     public boolean delete(Object id) {
@@ -229,9 +228,11 @@ public boolean update(Object id, Map<String, Object> data) {
         } catch (ClassNotFoundException e) {
             System.out.println("No tenemos el driver instalado");
             e.printStackTrace();
+            return null;
         } catch (Exception e) {
             System.out.println("Hubo un problema con la BD");
             e.printStackTrace();
+            return null;
         }
 
     }
@@ -269,9 +270,11 @@ public boolean update(Object id, Map<String, Object> data) {
         } catch (ClassNotFoundException e) {
             System.out.println("No tenemos el driver instalado");
             e.printStackTrace();
+            return null;
         } catch (Exception e) {
             System.out.println("Hubo un problema con la BD");
             e.printStackTrace();
+            return null;
         }
 
     }
@@ -319,4 +322,5 @@ public boolean update(Object id, Map<String, Object> data) {
 
         return lista;
     }
+
 }

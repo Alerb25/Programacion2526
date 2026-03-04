@@ -18,7 +18,7 @@ public class HadaMadrinaDAO extends CrudModel {
 
     }
 
-    String table = "hadaMadrina";
+   
 
     @Override
     public List<Map<String, Object>> filtrar(String campo, Object valor) throws SQLException {
