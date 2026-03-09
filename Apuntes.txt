@@ -128,3 +128,7 @@ POML limpio
  </build>
 
 </project>
+
+----
+Paginación: Fórmula base: `OFFSET = (pagina - 1) * numElementos`. Se usa en la cláusula `LIMIT num OFFSET offset`.
+
