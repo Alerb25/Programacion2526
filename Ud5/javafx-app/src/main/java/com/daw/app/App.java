@@ -20,12 +20,22 @@ public class App extends Application {
         
         //hemos creado una etuiqueta para el nombre
         Label lblNombre = new Label("Nombre");
+        Label lblResultado = new Label();
         //input de texto pal usuario
         TextField txtNombre = new TextField();
         //boton cualquiera
         Button btnAccion = new Button("Accion");
-        //panel para añadir los elementos
+          //panel para añadir los elementos
         VBox vPanel = new VBox();
+
+        btnAccion.setOnAction( e ->{
+            lblResultado.setText("Bienvenido a tu primera app " + txtNombre.getText());
+            vPanel.getChildren().add(lblResultado);
+        });
+      
+
+        //para que aparezcán las cosas  en el panel  
+        vPanel.getChildren().addAll(lblNombre, txtNombre, btnAccion);
 
         //añadir los elementos a la escena
         var scene = new Scene(vPanel);
