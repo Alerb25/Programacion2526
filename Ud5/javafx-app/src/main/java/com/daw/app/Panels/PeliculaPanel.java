@@ -1,5 +1,9 @@
 package com.daw.app.Panels;
 
+import java.sql.SQLException;
+
+import com.daw.app.model.PeliculasDAO;
+
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -52,6 +56,35 @@ public class PeliculaPanel extends GridPane {
         this.add(btnGuardar, 0, 6);
         this.add(btnReset, 1, 6);
 
-        
+        // evento para llamar a rest() cuando pulsamos el boton
+        btnReset.setOnAction(e -> {
+            reset();
+        });
+
+        btnGuardar.setOnAction(e -> {
+            guardar();
+        });
+    }
+
+    // metodo del reset
+    private void reset() {
+        this.txtTitulo.clear();
+        this.txtSipnosis.clear();
+        this.cmbClasificacion.getSelectionModel().select(0);
+        this.sldDuracion.setValue(120);
+
+    }
+
+    // metodo guardar
+    private int guardar() {
+        int resultado = -1;
+        try (PeliculasDAO peliculasDAO = new PeliculasDAO()) {
+           resultado = peliculasDAO.crearPelicula(txtTitulo.getText(), cmbClasificacion.getSelectionModel().getSelectedIndex(),
+                    (int) sldDuracion.getValue(), txtSipnosis.getText());
+        } catch (Exception e) {
+
+        }
+
+        return resultado;
     }
 }

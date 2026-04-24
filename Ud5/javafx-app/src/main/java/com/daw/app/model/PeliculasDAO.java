@@ -10,7 +10,7 @@ import java.util.Map;
 
 import com.daw.app.utils.Db;
 
-public class PeliculasDAO {
+public class PeliculasDAO implements  AutoCloseable {
 
     private Connection con;
 
@@ -211,5 +211,9 @@ public class PeliculasDAO {
 
         return columnasBorradas;
     }
+    @Override
+    public void close(){
+            
+    };
 
 }
