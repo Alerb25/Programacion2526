@@ -25,6 +25,7 @@ public class PeliculaPanel extends GridPane {
     public Slider sldDuracion = new Slider(30, 600, 120);
     public TextArea txtSipnosis = new TextArea("Escriba la sipnosis: ");
     public Button btnReset;
+    public Button btnMostrar;
     public Button btnGuardar = new Button("Guardar");
 
     public PeliculaPanel() {
@@ -37,6 +38,7 @@ public class PeliculaPanel extends GridPane {
         lblSipnosis = new Label("sipnosis");
         btnReset = new Button("Borrar");
         btnGuardar = new Button("Guardar");
+        btnMostrar = new Button("Mostrar");
 
         cmbClasificacion.getItems().addAll("Todos lo publicos", "+3", "+6", "+9", "+12", "+14", "+18",
                 "Jubilados only");
@@ -55,6 +57,7 @@ public class PeliculaPanel extends GridPane {
 
         this.add(btnGuardar, 0, 6);
         this.add(btnReset, 1, 6);
+        this.add(btnMostrar, 2, 6);
 
         // evento para llamar a rest() cuando pulsamos el boton
         btnReset.setOnAction(e -> {
@@ -64,6 +67,11 @@ public class PeliculaPanel extends GridPane {
         btnGuardar.setOnAction(e -> {
             guardar();
         });
+
+        btnMostrar.setOnAction(e ->{
+            mostrar();
+        });
+
     }
 
     // metodo del reset
@@ -86,5 +94,11 @@ public class PeliculaPanel extends GridPane {
         }
 
         return resultado;
+    }
+
+    //metodo mostrar datos
+    private String mostrar(){
+        String resultado;
+        return resultado =( "El titulo es" +this.txtTitulo.getText()+ " La duración es de "+ this.sldDuracion.getValue() +" La sipnosis:  "+ this.txtSipnosis.getText() + " y la clasificacion "+cmbClasificacion.getSelectionModel());
     }
 }
