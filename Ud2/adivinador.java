@@ -3,7 +3,7 @@
 import java.util.Scanner;
 
 public class adivinador {
-    public static void main(String[] args) {
+    public static void main() {
         /*
          * Programa que genera un numero aleatorio del 1 al 100
          * el usuario tiene que acertar el num, tendra 5 intentos
