@@ -1,7 +1,7 @@
-package main.java.com.daw.springboot.Controller;
+package com.daw.springboot.Controller;
 
-import com.ejemplo.proyecto.model.Videojuego;
-import com.ejemplo.proyecto.repository.VideojuegoRepository;
+import com.daw.springboot.Model.Videojuego;
+import com.daw.springboot.Model.VideojuegoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

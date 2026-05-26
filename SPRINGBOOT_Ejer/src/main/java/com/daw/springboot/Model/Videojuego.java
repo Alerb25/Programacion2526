@@ -1,4 +1,4 @@
-package main.java.com.daw.springboot.Model;
+package com.daw.springboot.Model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

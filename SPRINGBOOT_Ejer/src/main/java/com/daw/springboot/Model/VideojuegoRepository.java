@@ -1,6 +1,6 @@
-package main.java.com.daw.springboot.Model;
+package com.daw.springboot.Model;
 
-import com.ejemplo.proyecto.model.Videojuego;
+import com.daw.springboot.Model.Videojuego;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
