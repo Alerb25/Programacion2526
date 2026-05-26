@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle del Videojuego</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body class="container mt-4">
+    <div class="card">
+        <div class="card-header bg-info text-white">
+            <h2 th:text="${videojuego.titulo}"></h2>
+        </div>
+        <div class="card-body">
+            <p><strong>ID de registro:</strong> <span th:text="${videojuego.id}"></span></p>
+            <p><strong>Género:</strong> <span th:text="${videojuego.genero}"></span></p>
+            <p><strong>Precio del mercado:</strong> <span th:text="${videojuego.precio} + ' €'"></span></p>
+            <p><strong>Plataforma asignada:</strong> <span th:text="${videojuego.plataforma}"></span></p>
+            <p><strong>Estado:</strong> <span th:text="${videojuego.completado ? 'Completado al 100%' : 'Pendiente de jugar'}"></span></p>
+        </div>
+        <div class="card-footer">
+            <a th:href="@{/videojuegos}" class="btn btn-secondary">Volver al listado</a>
+            <a th:href="@{/videojuegos/edit/{id}(id=${videojuego.id})}" class="btn btn-warning">Editar Datos</a>
+        </div>
+    </div>
+</body>
+</html>
